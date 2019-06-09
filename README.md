@@ -2,11 +2,11 @@
 
 Image type detection library for PHP.
 
-[![Latest Version on Packagist](https://img.shields.io/github/release/selective-php/image-type.svg)](https://packagist.org/packages/selective/image)
+[![Latest Version on Packagist](https://img.shields.io/github/release/selective-php/image-type.svg)](https://packagist.org/packages/selective/image-type)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENSE.md)
 [![Build Status](https://travis-ci.org/selective-php/image-type.svg?branch=master)](https://travis-ci.org/selective-php/image-type)
 [![Coverage Status](https://scrutinizer-ci.com/g/selective-php/image-type/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/selective-php/image-type/code-structure)
-[![Total Downloads](https://img.shields.io/packagist/dt/selective/image.svg)](https://packagist.org/packages/selective/image/stats)
+[![Total Downloads](https://img.shields.io/packagist/dt/selective/image-type.svg)](https://packagist.org/packages/selective/image-type/stats)
 
 
 ## Features
