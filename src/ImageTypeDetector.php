@@ -21,7 +21,7 @@ final class ImageTypeDetector
     {
         $realFile = $file->getRealPath();
         if ($realFile === false) {
-            throw new ImageTypeException(sprintf('Image type could not be found: %s', $file->getPath()));
+            throw new ImageTypeException(sprintf('Image file could not be found: %s', $file->getPath()));
         }
 
         $stream = new SplFileObject($realFile);
@@ -46,51 +46,136 @@ final class ImageTypeDetector
      */
     private function parseType(SplFileObject $file): ?string
     {
-        $type = null;
-        $file->rewind();
+        foreach ($this->getDetectors() as $detector) {
+            $type = $detector($file);
 
-        switch ($file->fread(2)) {
-            case 'BM':
-                return 'bmp';
-            case 'GI':
-                return 'gif';
-            case chr(0xFF) . chr(0xd8):
-                return 'jpeg';
-            case "\0\0":
-                //switch ($this->readByte($this->stream->peek(1))) {
-                switch (ord($file->fread(2) ?: '')) {
-                    case 1:
-                        return 'ico';
-                    case 2:
-                        return 'cur';
-                }
-
-                return null;
-            case chr(0x89) . 'P':
-                return 'png';
-            case 'RI':
-                if (substr($file->fread(10) ?: '', 6, 4) === 'WEBP') {
-                    return 'webp';
-                }
-
-                return null;
-            case '8B':
-                return 'psd';
-            case 'II':
-            case 'MM':
-                return 'tiff';
-            default:
-                $file->rewind();
-
-                // Keep reading bytes until we find '<svg'.
-                while (true) {
-                    $byte = $file->fread(1);
-                    if ('<' === $byte && 'svg' === $file->fread(3)) {
-                        return 'svg';
-                    }
-                }
+            if ($type !== null) {
+                return $type;
+            }
         }
 
         return null;
+    }
+
+    /**
+     * Get array with detectors.
+     *
+     * @return array The detector callbacks
+     */
+    private function getDetectors(): array
+    {
+        return [
+            function (SplFileObject $file) {
+                return $this->detectBasicTypes($file);
+            },
+            function (SplFileObject $file) {
+                return $this->detectPng($file);
+            },
+            function (SplFileObject $file) {
+                return $this->detectWebp($file);
+            },
+            function (SplFileObject $file) {
+                return $this->detectSvg($file);
+            },
+            function (SplFileObject $file) {
+                return $this->detectIcoAndCur($file);
+            },
+        ];
+    }
+
+    /**
+     * Simple image detection.
+     *
+     * @param SplFileObject $file The image file
+     *
+     * @return string|null The image type
+     */
+    private function detectBasicTypes(SplFileObject $file): ?string
+    {
+        $file->rewind();
+        $bytes = $file->fread(2);
+
+        // Mapping
+        $magicBytes = [
+            'BM' => 'bmp',
+            'GI' => 'gif',
+            chr(0xFF) . chr(0xd8) => 'jpeg',
+            '8B' => 'png',
+            'II' => 'tiff',
+            'MM' => 'tiff',
+        ];
+
+        if (isset($magicBytes[$bytes])) {
+            return (string)$magicBytes[$bytes];
+        }
+
+        return null;
+    }
+
+    /**
+     * Image detection.
+     *
+     * @param SplFileObject $file The image file
+     *
+     * @return string|null The image type
+     */
+    private function detectPng(SplFileObject $file): ?string
+    {
+        $file->rewind();
+
+        return $file->fread(4) === chr(0x89) . 'PNG' ? 'png' : null;
+    }
+
+    /**
+     * Detect ICO and CUR file format.
+     *
+     * @param SplFileObject $file The image file
+     *
+     * @return string|null The image type
+     */
+    private function detectIcoAndCur(SplFileObject $file): ?string
+    {
+        $file->rewind();
+        $bytes = $file->fread(3);
+
+        if ($bytes === "\0\0\1") {
+            return 'ico';
+        }
+
+        if ($bytes === "\0\0\2") {
+            return 'cur';
+        }
+
+        return null;
+    }
+
+    /**
+     * Image detection.
+     *
+     * @param SplFileObject $file The image file
+     *
+     * @return string|null The image type
+     */
+    private function detectWebp(SplFileObject $file): ?string
+    {
+        $file->rewind();
+        $bytes = $file->fread(12) ?: '';
+
+        return substr($bytes, 8, 4) === 'WEBP' ? 'webp' : null;
+    }
+
+    /**
+     * Image detection.
+     *
+     * @param SplFileObject $file The image file
+     *
+     * @return string|null The image type
+     */
+    private function detectSvg(SplFileObject $file): ?string
+    {
+        $file->rewind();
+        $bytes = $file->fread(4) ?: '';
+
+        return strtolower($bytes) === '<svg' ? 'svg' : null;
     }
 }
