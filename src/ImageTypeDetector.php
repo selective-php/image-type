@@ -83,6 +83,9 @@ final class ImageTypeDetector
             function (SplFileObject $file) {
                 return $this->detectAi($file);
             },
+            function (SplFileObject $file) {
+                return $this->detectSwf($file);
+            },
         ];
     }
 
@@ -181,6 +184,7 @@ final class ImageTypeDetector
 
         return strtolower($bytes) === '<svg' ? 'svg' : null;
     }
+
     /**
      * Adobe Illustrator detection.
      *
@@ -198,4 +202,27 @@ final class ImageTypeDetector
         return $bytes === '%!PS-Adobe' ? 'ai' : null;
     }
 
+    /**
+     * Adobe Flash detection.
+     *
+     * https://www.adobe.com/content/dam/acom/en/devnet/pdf/swf-file-format-spec.pdf#page=27
+     *
+     * @param SplFileObject $file The image file
+     *
+     * @return string|null The image type
+     */
+    private function detectSwf(SplFileObject $file): ?string
+    {
+        $file->rewind();
+        $compression = $file->fread(1) ?: '';
+        $signature = $file->fread(2) ?: '';
+
+        $compressions = [
+            'F' => 1,
+            'C' => 1,
+            'Z' => 1,
+        ];
+
+        return $signature === 'WS' && isset($compressions[$compression]) ? 'swf' : null;
+    }
 }

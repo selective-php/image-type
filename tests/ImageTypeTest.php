@@ -60,6 +60,7 @@ class ImageTypeTest extends TestCase
             [__DIR__ . '/images/test.ico', 'ico'],
             [__DIR__ . '/images/test.cur', 'cur'],
             [__DIR__ . '/images/test.ai', 'ai'],
+            [__DIR__ . '/images/test.swf', 'swf'],
         ];
     }
 }
