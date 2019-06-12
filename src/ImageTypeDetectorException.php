@@ -7,6 +7,6 @@ use RuntimeException;
 /**
  * Exception.
  */
-final class ImageTypeException extends RuntimeException
+final class ImageTypeDetectorException extends RuntimeException
 {
 }

@@ -15,15 +15,16 @@ final class ImageTypeDetector
      *
      * @param SplFileInfo $file The image file
      *
-     * @throws ImageTypeException
+     * @throws ImageTypeDetectorException
      *
      * @return string The image type
      */
     public function getImageTypeFromFile(SplFileInfo $file): string
     {
         $realFile = $file->getRealPath();
+
         if ($realFile === false) {
-            throw new ImageTypeException(sprintf('Image file could not be found: %s', $file->getPath()));
+            throw new ImageTypeDetectorException(sprintf('Image file could not be found: %s', $file->getPath()));
         }
 
         $stream = new SplFileObject($realFile);
@@ -31,7 +32,7 @@ final class ImageTypeDetector
         unset($stream);
 
         if ($type === null) {
-            throw new ImageTypeException(sprintf('Image type could not be detected: %s', $file->getRealPath()));
+            throw new ImageTypeDetectorException(sprintf('Image type could not be detected: %s', $file->getRealPath()));
         }
 
         return $type;
