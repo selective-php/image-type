@@ -53,6 +53,7 @@ class ImageTypeTest extends TestCase
             [__DIR__ . '/images/test-tiff8.tif', 'tiff'],
             [__DIR__ . '/images/test-tiff24.tif', 'tiff'],
             [__DIR__ . '/images/test-tiff32.tif', 'tiff'],
+            [__DIR__ . '/images/test.psd', 'psd'],
             [__DIR__ . '/images/test.webp', 'webp'],
             [__DIR__ . '/images/test2.webp', 'webp'],
             [__DIR__ . '/images/test.svg', 'svg'],

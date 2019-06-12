@@ -100,7 +100,7 @@ final class ImageTypeDetector
             'BM' => 'bmp',
             'GI' => 'gif',
             chr(0xFF) . chr(0xd8) => 'jpeg',
-            '8B' => 'png',
+            '8B' => 'psd',
             'II' => 'tiff',
             'MM' => 'tiff',
         ];
