@@ -80,6 +80,9 @@ final class ImageTypeDetector
             function (SplFileObject $file) {
                 return $this->detectIcoAndCur($file);
             },
+            function (SplFileObject $file) {
+                return $this->detectAi($file);
+            },
         ];
     }
 
@@ -178,4 +181,21 @@ final class ImageTypeDetector
 
         return strtolower($bytes) === '<svg' ? 'svg' : null;
     }
+    /**
+     * Adobe Illustrator detection.
+     *
+     * http://www.idea2ic.com/File_Formats/Adobe%20Illustrator%20File%20Format.pdf#page=12
+     *
+     * @param SplFileObject $file The image file
+     *
+     * @return string|null The image type
+     */
+    private function detectAi(SplFileObject $file): ?string
+    {
+        $file->rewind();
+        $bytes = $file->fread(10) ?: '';
+
+        return $bytes === '%!PS-Adobe' ? 'ai' : null;
+    }
+
 }
