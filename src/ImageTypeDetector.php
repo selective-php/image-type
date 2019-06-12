@@ -15,6 +15,8 @@ final class ImageTypeDetector
      *
      * @param SplFileInfo $file The image file
      *
+     * @throws ImageTypeException
+     *
      * @return string The image type
      */
     public function getImageTypeFromFile(SplFileInfo $file): string
@@ -39,8 +41,6 @@ final class ImageTypeDetector
      * Reads and returns the type of the image.
      *
      * @param SplFileObject $file The image file
-     *
-     * @throws ImageTypeException
      *
      * @return string|null
      */
