@@ -36,7 +36,7 @@ use Selective\ImageType\ImageTypeDetector;
 $file = new SplFileInfo('example.jpg');
 
 $imageTypeDetector = new ImageTypeDetector();
-echo $imageTypeDetector->getImageTypeFromFile($file); // jpeg
+echo $imageTypeDetector->getImageTypeFromFile($file)->toString(); // jpeg
 ```
 
 ## Similar libraries
