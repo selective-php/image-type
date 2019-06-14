@@ -70,6 +70,9 @@ final class ImageTypeDetector
                 return $this->detectBasicTypes($file);
             },
             function (SplFileObject $file) {
+                return $this->detectTiff($file);
+            },
+            function (SplFileObject $file) {
                 return $this->detectPng($file);
             },
             function (SplFileObject $file) {
@@ -108,12 +111,33 @@ final class ImageTypeDetector
             'GI' => 'gif',
             chr(0xFF) . chr(0xd8) => 'jpeg',
             '8B' => 'psd',
-            'II' => 'tiff',
-            'MM' => 'tiff',
         ];
 
         if (isset($magicBytes[$bytes])) {
             return (string)$magicBytes[$bytes];
+        }
+
+        return null;
+    }
+
+    /**
+     * Image detection.
+     *
+     * @param SplFileObject $file The image file
+     *
+     * @return string|null The image type
+     */
+    private function detectTiff(SplFileObject $file): ?string
+    {
+        $file->rewind();
+        $bytes = $file->fread(2);
+
+        if ($bytes === 'II' || $bytes === 'MM') {
+            $chars = (string)$file->fread(2);
+            $formattedChar = unpack('cchars', $chars);
+            if ($formattedChar['chars'] === 42) {
+                return 'tiff';
+            }
         }
 
         return null;
