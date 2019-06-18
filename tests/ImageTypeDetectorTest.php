@@ -62,6 +62,8 @@ class ImageTypeDetectorTest extends TestCase
             [__DIR__ . '/images/test.cur', ImageType::CUR],
             [__DIR__ . '/images/test.ai', ImageType::AI],
             [__DIR__ . '/images/test.swf', ImageType::SWF],
+            [__DIR__ . '/images/test-alpha.heic', ImageType::HEIC],
+            [__DIR__ . '/images/test-animation.heic', ImageType::HEIC],
         ];
     }
 

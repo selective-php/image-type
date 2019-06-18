@@ -87,6 +87,9 @@ final class ImageTypeDetector
             function (SplFileObject $file) {
                 return $this->detectSwf($file);
             },
+            function (SplFileObject $file) {
+                return $this->detectHeic($file);
+            },
         ];
     }
 
@@ -225,5 +228,28 @@ final class ImageTypeDetector
         ];
 
         return $signature === 'WS' && isset($compressions[$compression]) ? 'swf' : null;
+    }
+
+    /**
+     * HEIC detection.
+     *
+     * @param SplFileObject $file The image file
+     *
+     * @return string|null The image type
+     */
+    private function detectHeic(SplFileObject $file): ?string
+    {
+        $file->rewind();
+        while ($file->eof() === false) {
+            $byte = $file->fread(1);
+            if ($byte === 'h') {
+                $bytes = $file->fread(3);
+                if ($bytes === 'eic' || $bytes === 'eix' || $bytes === 'evc' || $bytes === 'evx') {
+                    return 'heic';
+                }
+            }
+        }
+
+        return null;
     }
 }
