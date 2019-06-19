@@ -6,7 +6,8 @@ use PHPUnit\Framework\TestCase;
 use Selective\ImageType\ImageType;
 use Selective\ImageType\ImageTypeDetector;
 use Selective\ImageType\ImageTypeDetectorException;
-use SplFileInfo;
+use SplFileObject;
+use SplTempFileObject;
 
 /**
  * Test.
@@ -28,7 +29,7 @@ class ImageTypeDetectorTest extends TestCase
         $this->assertFileExists($file);
         $imageTypeDetector = new ImageTypeDetector();
 
-        $file = new SplFileInfo($file);
+        $file = new SplFileObject($file);
         $actual = $imageTypeDetector->getImageTypeFromFile($file);
 
         $this->assertTrue($actual->equals(new ImageType($expected)));
@@ -72,27 +73,16 @@ class ImageTypeDetectorTest extends TestCase
      *
      * @return void
      */
-    public function testGetImageTypeFromFileWithError(): void
-    {
-        $this->expectException(ImageTypeDetectorException::class);
-
-        $imageTypeDetector = new ImageTypeDetector();
-
-        $file = new SplFileInfo('/nada');
-        $imageTypeDetector->getImageTypeFromFile($file);
-    }
-
-    /**
-     * Test.
-     *
-     * @return void
-     */
     public function testGetImageTypeWithUnknownFormat(): void
     {
         $this->expectException(ImageTypeDetectorException::class);
+        $this->expectExceptionMessage('Image type could not be detected');
+
         $imageTypeDetector = new ImageTypeDetector();
 
-        $file = new SplFileInfo(__DIR__ . '/images/empty.png');
-        $imageTypeDetector->getImageTypeFromFile($file);
+        $image = new SplTempFileObject();
+        $image->fwrite('temp');
+
+        $imageTypeDetector->getImageTypeFromFile($image);
     }
 }

@@ -2,7 +2,6 @@
 
 namespace Selective\ImageType;
 
-use SplFileInfo;
 use SplFileObject;
 
 /**
@@ -13,26 +12,18 @@ final class ImageTypeDetector
     /**
      * Detect image type.
      *
-     * @param SplFileInfo $file The image file
+     * @param SplFileObject $file The image file
      *
      * @throws ImageTypeDetectorException
      *
      * @return ImageType The image type
      */
-    public function getImageTypeFromFile(SplFileInfo $file): ImageType
+    public function getImageTypeFromFile(SplFileObject $file): ImageType
     {
-        $realFile = $file->getRealPath();
-
-        if ($realFile === false) {
-            throw new ImageTypeDetectorException(sprintf('Image file could not be found: %s', $file->getPath()));
-        }
-
-        $stream = new SplFileObject($realFile);
-        $type = $this->parseType($stream);
-        unset($stream);
+        $type = $this->parseType($file);
 
         if ($type === null) {
-            throw new ImageTypeDetectorException(sprintf('Image type could not be detected: %s', $file->getRealPath()));
+            throw new ImageTypeDetectorException('Image type could not be detected');
         }
 
         return new ImageType($type);

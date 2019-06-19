@@ -28,7 +28,7 @@ composer require selective/image-type
 
 ## Usage
 
-### Detect image type from file
+### Detecting the image type of an file
 
 ```php
 use Selective\ImageType\ImageTypeDetector;
@@ -37,6 +37,18 @@ $file = new SplFileInfo('example.jpg');
 
 $imageTypeDetector = new ImageTypeDetector();
 echo $imageTypeDetector->getImageTypeFromFile($file)->toString(); // jpeg
+```
+
+### Detecting the image type of an in-memory object
+
+```php
+use Selective\ImageType\ImageTypeDetector;
+
+$image = new SplTempFileObject();
+$image->fwrite('my file content');
+
+$imageTypeDetector = new ImageTypeDetector();
+echo $imageTypeDetector->getImageTypeFromFile($file)->toString();
 ```
 
 ## Similar libraries
