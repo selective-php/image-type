@@ -107,12 +107,12 @@ final class ImageTypeDetector
 
         // Mapping
         $magicBytes = [
-            'BM' => 'bmp',
-            'GI' => 'gif',
-            chr(0xFF) . chr(0xd8) => 'jpeg',
-            '8B' => 'psd',
-            'II' => 'tiff',
-            'MM' => 'tiff',
+            'BM' => ImageType::BMP,
+            'GI' => ImageType::GIF,
+            chr(0xFF) . chr(0xd8) => ImageType::JPEG,
+            '8B' => ImageType::PSD,
+            'II' => ImageType::TIFF,
+            'MM' => ImageType::TIFF,
         ];
 
         if (isset($magicBytes[$bytes])) {
@@ -133,7 +133,7 @@ final class ImageTypeDetector
     {
         $file->rewind();
 
-        return $file->fread(4) === chr(0x89) . 'PNG' ? 'png' : null;
+        return $file->fread(4) === chr(0x89) . 'PNG' ? ImageType::PNG : null;
     }
 
     /**
@@ -149,11 +149,11 @@ final class ImageTypeDetector
         $bytes = $file->fread(3);
 
         if ($bytes === "\0\0\1") {
-            return 'ico';
+            return ImageType::ICO;
         }
 
         if ($bytes === "\0\0\2") {
-            return 'cur';
+            return ImageType::CUR;
         }
 
         return null;
@@ -171,7 +171,7 @@ final class ImageTypeDetector
         $file->rewind();
         $bytes = $file->fread(12) ?: '';
 
-        return substr($bytes, 8, 4) === 'WEBP' ? 'webp' : null;
+        return substr($bytes, 8, 4) === 'WEBP' ? ImageType::WEBP : null;
     }
 
     /**
@@ -186,7 +186,7 @@ final class ImageTypeDetector
         $file->rewind();
         $bytes = $file->fread(4) ?: '';
 
-        return strtolower($bytes) === '<svg' ? 'svg' : null;
+        return strtolower($bytes) === '<svg' ? ImageType::SVG : null;
     }
 
     /**
@@ -203,7 +203,7 @@ final class ImageTypeDetector
         $file->rewind();
         $bytes = $file->fread(10) ?: '';
 
-        return $bytes === '%!PS-Adobe' ? 'ai' : null;
+        return $bytes === '%!PS-Adobe' ? ImageType::AI : null;
     }
 
     /**
@@ -227,7 +227,7 @@ final class ImageTypeDetector
             'Z' => 1,
         ];
 
-        return $signature === 'WS' && isset($compressions[$compression]) ? 'swf' : null;
+        return $signature === 'WS' && isset($compressions[$compression]) ? ImageType::SWF : null;
     }
 
     /**
