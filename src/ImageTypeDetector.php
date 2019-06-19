@@ -240,16 +240,41 @@ final class ImageTypeDetector
     private function detectHeic(SplFileObject $file): ?string
     {
         $file->rewind();
-        while ($file->eof() === false) {
-            $byte = $file->fread(1);
-            if ($byte === 'h') {
-                $bytes = $file->fread(3);
-                if ($bytes === 'eic' || $bytes === 'eix' || $bytes === 'evc' || $bytes === 'evx') {
-                    return 'heic';
-                }
-            }
-        }
 
-        return null;
+        // Skip first 4 bytes
+        $file->fread(4);
+
+        // Use ftyp(heic|heix|...|mif1) as magic bytes
+
+        // Read magic bytes
+        $bytes = $file->fread(4) ?: '';
+
+        // Read major brand and minor version
+        $ccCode = $file->fread(4) ?: '';
+
+        // Source: https://github.com/strukturag/libheif/issues/83
+        $ccCodes = [
+            // Usual HEIF images
+            'heic' => 1,
+            // 10bit images, or anything that uses h265 with range extension
+            'heix' => 1,
+            // Brands for image sequences
+            'hevc' => 1,
+            'hevx' => 1,
+            // Multiview
+            'heim' => 1,
+            // Scalable
+            'heis' => 1,
+            // Multiview sequence
+            'hevm' => 1,
+            // Scalable sequence
+            'hevs' => 1,
+            // Special brands
+            'mif1' => 1,
+            // Equivalent case for image sequences
+            'msf1' => 1,
+        ];
+
+        return $bytes === 'ftyp' && isset($ccCodes[$ccCode]) ? ImageType::HEIC : null;
     }
 }
