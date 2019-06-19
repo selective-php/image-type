@@ -28,7 +28,7 @@ composer require selective/image-type
 
 ## Usage
 
-### Detecting the image type of an file
+### Detect the image type of file
 
 ```php
 use Selective\ImageType\ImageTypeDetector;
@@ -39,7 +39,7 @@ $imageTypeDetector = new ImageTypeDetector();
 echo $imageTypeDetector->getImageTypeFromFile($file)->toString(); // jpeg
 ```
 
-### Detecting the image type of an in-memory object
+### Detect the image type of in-memory object
 
 ```php
 use Selective\ImageType\ImageTypeDetector;
