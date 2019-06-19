@@ -31,23 +31,19 @@ composer require selective/image-type
 ### Detect the image type of file
 
 ```php
-use Selective\ImageType\ImageTypeDetector;
+$file = new \SplFileInfo('example.jpg');
 
-$file = new SplFileInfo('example.jpg');
-
-$imageTypeDetector = new ImageTypeDetector();
+$imageTypeDetector = new \Selective\ImageType\ImageTypeDetector();
 echo $imageTypeDetector->getImageTypeFromFile($file)->toString(); // jpeg
 ```
 
 ### Detect the image type of in-memory object
 
 ```php
-use Selective\ImageType\ImageTypeDetector;
-
-$image = new SplTempFileObject();
+$image = new \SplTempFileObject();
 $image->fwrite('my file content');
 
-$imageTypeDetector = new ImageTypeDetector();
+$imageTypeDetector = new \Selective\ImageType\ImageTypeDetector();
 echo $imageTypeDetector->getImageTypeFromFile($file)->toString();
 ```
 
