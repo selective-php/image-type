@@ -31,7 +31,7 @@ composer require selective/image-type
 ### Detect the image type of file
 
 ```php
-$file = new \SplFileInfo('example.jpg');
+$file = new \SplFileObject('example.jpg');
 
 $imageTypeDetector = new \Selective\ImageType\ImageTypeDetector();
 echo $imageTypeDetector->getImageTypeFromFile($file)->toString(); // jpeg
