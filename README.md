@@ -2,11 +2,12 @@
 
 Image type detection library for PHP.
 
-[![Latest Version on Packagist](https://img.shields.io/github/release/selective-php/image-type.svg)](https://packagist.org/packages/selective/image-type)
-[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENSE.md)
-[![Build Status](https://travis-ci.org/selective-php/image-type.svg?branch=master)](https://travis-ci.org/selective-php/image-type)
-[![Coverage Status](https://scrutinizer-ci.com/g/selective-php/image-type/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/selective-php/image-type/code-structure)
-[![Total Downloads](https://img.shields.io/packagist/dt/selective/image-type.svg)](https://packagist.org/packages/selective/image-type/stats)
+[![Latest Version on Packagist](https://img.shields.io/github/release/selective-php/image-type.svg?style=flat-square)](https://packagist.org/packages/selective/image-type)
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
+[![Build Status](https://travis-ci.org/selective-php/image-type.svg?branch=master?style=flat-square)](https://travis-ci.org/selective-php/image-type)
+[![Coverage Status](https://scrutinizer-ci.com/g/selective-php/image-type/badges/coverage.png?b=master?style=flat-square)](https://scrutinizer-ci.com/g/selective-php/image-type/code-structure)
+[![Quality Score](https://scrutinizer-ci.com/g/selective-php/image-type/badges/quality-score.png?b=master?style=flat-square)](https://scrutinizer-ci.com/g/selective-php/image-type/?branch=master)
+[![Total Downloads](https://img.shields.io/packagist/dt/selective/image-type.svg?style=flat-square)](https://packagist.org/packages/selective/image-type/stats)
 
 
 ## Features
