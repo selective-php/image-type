@@ -12,10 +12,15 @@ Image type detection library for PHP.
 
 ## Features
 
-* Detect image type from file content (not the extension)
-* Supported formats: JPG, GIF, PNG, WEBP, BMP, PSD, TIFF, SVG, ICO, CUR, SWF, AI, HEIC and RAW files
+* Detection the image type by its content (header)
 * No dependencies
 * Very fast
+
+### Supported formats
+
+* JPG, GIF, PNG, WEBP, SVG, BMP, PSD, TIFF, ICO, CUR, SWF, AI
+* HEIC (Apple iPhone photos)
+* RAW: DC3
 
 ## Requirements
 
