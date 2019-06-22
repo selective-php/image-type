@@ -32,6 +32,8 @@
 *.gif binary
 *.ico binary
 *.jpg binary
+*.cr3 binary
+*.CR3 binary
 *.png binary
 *.bmp binary
 *.phar binary
