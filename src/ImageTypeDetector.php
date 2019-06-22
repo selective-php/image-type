@@ -81,6 +81,9 @@ final class ImageTypeDetector
             function (SplFileObject $file) {
                 return $this->detectHeic($file);
             },
+            function (SplFileObject $file) {
+                return $this->detectCr3($file);
+            },
         ];
     }
 
@@ -267,5 +270,23 @@ final class ImageTypeDetector
         ];
 
         return $bytes === 'ftyp' && isset($ccCodes[$ccCode]) ? ImageType::HEIC : null;
+    }
+
+    /**
+     * CR3 detection.
+     *
+     * @param SplFileObject $file The image file
+     *
+     * @return string|null The image type
+     */
+    private function detectCr3(SplFileObject $file): ?string
+    {
+        $file->rewind();
+
+        $file->fread(4);
+
+        $bytes = $file->fread(7);
+
+        return $bytes === 'ftypcrx' ? ImageType::CR3 : null;
     }
 }
