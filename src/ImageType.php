@@ -27,6 +27,7 @@ class ImageType
     public const SWF = 'swf';
     public const AI = 'ai';
     public const HEIC = 'heic';
+    public const CR3 = 'cr3';
 
     /**
      * ImageType constructor.
