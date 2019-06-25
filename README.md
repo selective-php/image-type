@@ -12,7 +12,7 @@ Image type detection library for PHP.
 
 ## Features
 
-* Detection the image type by its content (header)
+* Detection of the image type based on its content (header)
 * No dependencies
 * Very fast
 
