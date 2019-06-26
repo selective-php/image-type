@@ -306,11 +306,7 @@ final class ImageTypeDetector
         $file->rewind();
         $bytes = $file->fread(2);
 
-        if ($bytes === 'MM') {
-            return ImageType::TIFF;
-        }
-
-        if ($bytes !== 'II') {
+        if ($bytes !== 'II' && $bytes !== 'MM') {
             return null;
         }
 
@@ -318,6 +314,7 @@ final class ImageTypeDetector
 
         // TIFF based RAW images
         $result = $this->detectRw2($file) ?? $result;
+        $result = $this->detectPef($file) ?? $result;
 
         return $result;
     }
@@ -335,5 +332,20 @@ final class ImageTypeDetector
         $bytes = $file->fread(4);
 
         return $bytes === "IIU\0" ? ImageType::RW2 : null;
+    }
+
+    /**
+     * PEF (Pentax) RAW format identification.
+     *
+     * @param SplFileObject $file The image file
+     *
+     * @return string|null The image type
+     */
+    private function detectPef(SplFileObject $file): ?string
+    {
+        $file->rewind();
+        $bytes = $file->fread(4);
+
+        return $bytes === "MM\0*" ? ImageType::PEF : null;
     }
 }
