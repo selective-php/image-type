@@ -70,6 +70,9 @@ final class ImageTypeDetector
                 return $this->detectSvg($file);
             },
             function (SplFileObject $file) {
+                return $this->detectTiff($file);
+            },
+            function (SplFileObject $file) {
                 return $this->detectIcoAndCur($file);
             },
             function (SplFileObject $file) {
@@ -83,6 +86,9 @@ final class ImageTypeDetector
             },
             function (SplFileObject $file) {
                 return $this->detectCr3($file);
+            },
+            function (SplFileObject $file) {
+                return $this->detectRw2($file);
             },
         ];
     }
@@ -105,8 +111,6 @@ final class ImageTypeDetector
             'GI' => ImageType::GIF,
             chr(0xFF) . chr(0xd8) => ImageType::JPEG,
             '8B' => ImageType::PSD,
-            'II' => ImageType::TIFF,
-            'MM' => ImageType::TIFF,
         ];
 
         if (isset($magicBytes[$bytes])) {
@@ -288,5 +292,48 @@ final class ImageTypeDetector
         $bytes = $file->fread(7);
 
         return $bytes === 'ftypcrx' ? ImageType::CR3 : null;
+    }
+
+    /**
+     * TIFF and TIFF based RAW image identification.
+     *
+     * @param SplFileObject $file The image file
+     *
+     * @return string|null The image type
+     */
+    private function detectTiff(SplFileObject $file): ?string
+    {
+        $file->rewind();
+        $bytes = $file->fread(2);
+
+        if ($bytes === 'MM') {
+            return ImageType::TIFF;
+        }
+
+        if ($bytes !== 'II') {
+            return null;
+        }
+
+        $result = ImageType::TIFF;
+
+        // TIFF based RAW images
+        $result = $this->detectRw2($file) ?? $result;
+
+        return $result;
+    }
+
+    /**
+     * RW2 (Panasonic ) RAW format identification.
+     *
+     * @param SplFileObject $file The image file
+     *
+     * @return string|null The image type
+     */
+    private function detectRw2(SplFileObject $file): ?string
+    {
+        $file->rewind();
+        $bytes = $file->fread(4);
+
+        return $bytes === "IIU\0" ? ImageType::RW2 : null;
     }
 }

@@ -28,6 +28,7 @@ class ImageType
     public const AI = 'ai';
     public const HEIC = 'heic';
     public const CR3 = 'cr3';
+    public const RW2 = 'rw2';
 
     /**
      * ImageType constructor.

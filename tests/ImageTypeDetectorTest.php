@@ -45,7 +45,6 @@ class ImageTypeDetectorTest extends TestCase
         return [
             [__DIR__ . '/images/test.gif', ImageType::GIF],
             [__DIR__ . '/images/test.jpg', ImageType::JPEG],
-            //[__DIR__ . '/images/test.wbmp', 'wbmp'],
             [__DIR__ . '/images/test-animated.gif', ImageType::GIF],
             [__DIR__ . '/images/test-bmp8.bmp', ImageType::BMP],
             [__DIR__ . '/images/test-bmp24.bmp', ImageType::BMP],
@@ -68,6 +67,7 @@ class ImageTypeDetectorTest extends TestCase
             [__DIR__ . '/images/test-raw.CR3', ImageType::CR3],
             [__DIR__ . '/images/test-raw2.CR3', ImageType::CR3],
             [__DIR__ . '/images/test-mif1.heic', ImageType::HEIC],
+            [__DIR__ . '/images/test_panasonic-lumix-dmc-lx3-01.rw2', ImageType::RW2],
         ];
     }
 
