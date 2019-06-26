@@ -87,9 +87,6 @@ final class ImageTypeDetector
             function (SplFileObject $file) {
                 return $this->detectCr3($file);
             },
-            function (SplFileObject $file) {
-                return $this->detectRw2($file);
-            },
         ];
     }
 
