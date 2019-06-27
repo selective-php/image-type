@@ -71,6 +71,9 @@ class ImageTypeDetectorTest extends TestCase
             [__DIR__ . '/images/test-panasonic-lumix-dmc-lx3-01.rw2', ImageType::RW2],
             [__DIR__ . '/images/test-raw-pentax-k10D-srgb.pef', ImageType::PEF],
             [__DIR__ . '/images/test.cr2', ImageType::CR2],
+            [__DIR__ . '/images/test-1a-1.3fr', ImageType::FR3],
+            [__DIR__ . '/images/test-1a-2.3fr', ImageType::FR3],
+            [__DIR__ . '/images/test-1b.3fr', ImageType::FR3],
         ];
     }
 

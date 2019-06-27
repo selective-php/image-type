@@ -20,7 +20,15 @@ Image type detection library for PHP.
 
 * JPG, GIF, PNG, WEBP, SVG, BMP, PSD, TIFF, ICO, CUR, SWF, AI
 * HEIC (Apple iPhone photos)
-* RAW: DC3, CR2 (Cannon), RW2 (Panasonic), PEF (Pentax)
+
+#### RAW
+
+* CR3 (Canon)
+* CR2 (Cannon)
+* PEF (Pentax)
+* RW2 (Panasonic)
+* PEF (Pentax)
+* 3FR (Hasselblad)
 
 ## Requirements
 

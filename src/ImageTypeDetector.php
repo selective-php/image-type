@@ -274,7 +274,7 @@ final class ImageTypeDetector
     }
 
     /**
-     * CR3 detection.
+     * CR3 (Canon) RAW format detection.
      *
      * @param SplFileObject $file The image file
      *
@@ -283,7 +283,6 @@ final class ImageTypeDetector
     private function detectCr3(SplFileObject $file): ?string
     {
         $file->rewind();
-
         $file->fread(4);
 
         $bytes = $file->fread(7);
@@ -313,6 +312,7 @@ final class ImageTypeDetector
         $result = $this->detectCr2($file) ?? $result;
         $result = $this->detectRw2($file) ?? $result;
         $result = $this->detectPef($file) ?? $result;
+        $result = $this->detect3Fr($file) ?? $result;
 
         return $result;
     }
@@ -360,5 +360,20 @@ final class ImageTypeDetector
         $bytes = $file->fread(10);
 
         return $bytes === "II\x2a\0\x10\0\0\0CR" ? ImageType::CR2 : null;
+    }
+
+    /**
+     * Hasselblad 3FR RAW format identification.
+     *
+     * @param SplFileObject $file The image file
+     *
+     * @return string|null The image type
+     */
+    private function detect3Fr(SplFileObject $file): ?string
+    {
+        $file->rewind();
+        $bytes = $file->fread(512);
+
+        return strpos($bytes, 'Hasselblad') > 10 ? ImageType::FR3 : null;
     }
 }
