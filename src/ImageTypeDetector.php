@@ -374,6 +374,6 @@ final class ImageTypeDetector
         $file->rewind();
         $bytes = $file->fread(512);
 
-        return strpos($bytes, 'Hasselblad') > 10 ? ImageType::FR3 : null;
+        return strpos($bytes ?: '', 'Hasselblad') > 10 ? ImageType::FR3 : null;
     }
 }
