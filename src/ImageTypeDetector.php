@@ -310,6 +310,7 @@ final class ImageTypeDetector
         $result = ImageType::TIFF;
 
         // TIFF based RAW images
+        $result = $this->detectCr2($file) ?? $result;
         $result = $this->detectRw2($file) ?? $result;
         $result = $this->detectPef($file) ?? $result;
 
@@ -344,5 +345,20 @@ final class ImageTypeDetector
         $bytes = $file->fread(4);
 
         return $bytes === "MM\0*" ? ImageType::PEF : null;
+    }
+
+    /**
+     * CR2 Cannon RAW format identification.
+     *
+     * @param SplFileObject $file The image file
+     *
+     * @return string|null The image type
+     */
+    private function detectCr2(SplFileObject $file): ?string
+    {
+        $file->rewind();
+        $bytes = $file->fread(10);
+
+        return $bytes === "II\x2a\0\x10\0\0\0CR" ? ImageType::CR2 : null;
     }
 }

@@ -32,6 +32,7 @@ class ImageTypeDetectorTest extends TestCase
         $file = new SplFileObject($file);
         $actual = $imageTypeDetector->getImageTypeFromFile($file);
 
+        $this->assertSame($expected, $actual->toString());
         $this->assertTrue($actual->equals(new ImageType($expected)));
     }
 
@@ -69,6 +70,7 @@ class ImageTypeDetectorTest extends TestCase
             [__DIR__ . '/images/test-mif1.heic', ImageType::HEIC],
             [__DIR__ . '/images/test-panasonic-lumix-dmc-lx3-01.rw2', ImageType::RW2],
             [__DIR__ . '/images/test-raw-pentax-k10D-srgb.pef', ImageType::PEF],
+            [__DIR__ . '/images/test.cr2', ImageType::CR2],
         ];
     }
 
