@@ -55,6 +55,8 @@ class ImageTypeDetectorTest extends TestCase
             [__DIR__ . '/images/test-tiff8.tif', ImageType::TIFF],
             [__DIR__ . '/images/test-tiff24.tif', ImageType::TIFF],
             [__DIR__ . '/images/test-tiff32.tif', ImageType::TIFF],
+            [__DIR__ . '/images/test.iiq', ImageType::TIFF],
+            [__DIR__ . '/images/test-phase-one.iiq', ImageType::TIFF],
             [__DIR__ . '/images/test.psd', ImageType::PSD],
             [__DIR__ . '/images/test.webp', ImageType::WEBP],
             [__DIR__ . '/images/test2.webp', ImageType::WEBP],

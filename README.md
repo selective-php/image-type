@@ -29,6 +29,7 @@ Image type detection library for PHP.
 * RW2 (Panasonic)
 * PEF (Pentax)
 * 3FR (Hasselblad)
+* IIQ (Phase One)
 
 ## Requirements
 
