@@ -87,7 +87,7 @@ $detector = new ImageTypeDetector();
 $detector->addProvider(new RawProvider());
 $detector->addProvider(new DefaultProvider());
 
-echo $imageTypeDetector->getImageTypeFromFile($file)->toString();
+echo $detector->getImageTypeFromFile($file)->toString();
 ```
 
 ## Similar libraries
