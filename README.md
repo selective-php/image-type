@@ -18,8 +18,19 @@ Image type detection library for PHP.
 
 ### Supported formats
 
-* JPG, GIF, PNG, WEBP, SVG, BMP, PSD, TIFF, ICO, CUR, SWF, AI
-* HEIC (Apple iPhone photos)
+* JPG / JPEG (Joint Photographic Experts Group)
+* GIF (Graphics Interchange Format)
+* PNG (Portable Network Graphics)
+* WEBP (WebP)
+* SVG (Scalable Vector Graphics)
+* BMP (Windows Bitmap)
+* PSD (Photoshop Document)
+* TIF / TIFF (Tagged Image File Format)
+* ICO (Icon)
+* CUR (Cursor)
+* SWF (Small Web Format, Flash)
+* AI (Adobe Illustrator)
+* HEIF / HEIC (High Efficiency Image File Format) / Apple iPhone photos
 
 #### RAW
 
