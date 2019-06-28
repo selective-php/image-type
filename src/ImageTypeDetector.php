@@ -313,6 +313,7 @@ final class ImageTypeDetector
         $result = $this->detectRw2($file) ?? $result;
         $result = $this->detectPef($file) ?? $result;
         $result = $this->detect3Fr($file) ?? $result;
+        $result = $this->detectOrf($file) ?? $result;
 
         return $result;
     }
@@ -375,5 +376,20 @@ final class ImageTypeDetector
         $bytes = $file->fread(512);
 
         return strpos($bytes ?: '', 'Hasselblad') > 10 ? ImageType::FR3 : null;
+    }
+
+    /**
+     * ORF (Olympus) format identification.
+     *
+     * @param SplFileObject $file The image file
+     *
+     * @return string|null The image type
+     */
+    private function detectOrf(SplFileObject $file): ?string
+    {
+        $file->rewind();
+        $bytes = $file->fread(4);
+
+        return $bytes === 'IIRO' || $bytes === 'MMOR' || $bytes === 'IIRS' ? ImageType::ORF : null;
     }
 }

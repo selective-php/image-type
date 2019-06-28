@@ -30,6 +30,7 @@ Image type detection library for PHP.
 * PEF (Pentax)
 * 3FR (Hasselblad)
 * IIQ (Phase One)
+* ORF (Olympus)
 
 ## Requirements
 

@@ -32,6 +32,7 @@ class ImageType
     public const RW2 = 'rw2';
     public const PEF = 'pef';
     public const FR3 = '3FR';
+    public const ORF = 'ORF';
 
     /**
      * ImageType constructor.
