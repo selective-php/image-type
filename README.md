@@ -18,30 +18,30 @@ Image type detection library for PHP.
 
 ### Supported formats
 
-* JPG / JPEG (Joint Photographic Experts Group)
-* GIF (Graphics Interchange Format)
-* PNG (Portable Network Graphics)
-* WEBP (WebP)
-* SVG (Scalable Vector Graphics)
-* BMP (Windows Bitmap)
-* PSD (Photoshop Document)
-* TIF / TIFF (Tagged Image File Format)
-* ICO (Icon)
-* CUR (Cursor)
-* SWF (Small Web Format, Flash)
-* AI (Adobe Illustrator)
-* HEIF / HEIC (High Efficiency Image File Format) / Apple iPhone photos
+* **JPG** / **JPEG** (Joint Photographic Experts Group)
+* **GIF** (Graphics Interchange Format)
+* **PNG** (Portable Network Graphics)
+* **WEBP** (WebP)
+* **SVG** (Scalable Vector Graphics)
+* **BMP** (Windows Bitmap)
+* **PSD** (Photoshop Document)
+* **TIF** / **TIFF** (Tagged Image File Format)
+* **ICO** (Icon)
+* **CUR** (Cursor)
+* **SWF** (Small Web Format, Flash)
+* **AI** (Adobe Illustrator)
+* **HEIF** / **HEIC** (High Efficiency Image File Format) / Apple iPhone photos
 
 #### RAW
 
-* CR3 (Canon)
-* CR2 (Cannon)
-* PEF (Pentax)
-* RW2 (Panasonic)
-* PEF (Pentax)
-* 3FR (Hasselblad)
-* IIQ (Phase One)
-* ORF (Olympus)
+* **CR3** (Canon)
+* **CR2** (Cannon)
+* **PEF** (Pentax)
+* **RW2** (Panasonic)
+* **PEF** (Pentax)
+* **3FR** (Hasselblad)
+* **IIQ** (Phase One)
+* **ORF** (Olympus)
 
 ## Requirements
 
