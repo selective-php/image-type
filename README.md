@@ -58,19 +58,35 @@ composer require selective/image-type
 ### Detect the image type of file
 
 ```php
-$file = new \SplFileObject('example.jpg');
+use Selective\ImageType\ImageTypeDetector;
+use Selective\ImageType\Provider\DefaultProvider;
+use Selective\ImageType\Provider\RawProvider;
+use SplFileObject;
 
-$imageTypeDetector = new \Selective\ImageType\ImageTypeDetector();
-echo $imageTypeDetector->getImageTypeFromFile($file)->toString(); // jpeg
+$file = new SplFileObject('example.jpg');
+
+$detector = new ImageTypeDetector();
+
+// Add image detectors
+$detector->addProvider(new RawProvider());
+$detector->addProvider(new DefaultProvider());
+
+echo $detector->getImageTypeFromFile($file)->toString(); // jpeg
 ```
 
 ### Detect the image type of in-memory object
 
 ```php
-$image = new \SplTempFileObject();
+$image = new SplTempFileObject();
+
 $image->fwrite('my file content');
 
-$imageTypeDetector = new \Selective\ImageType\ImageTypeDetector();
+$detector = new ImageTypeDetector();
+
+// Add image detectors
+$detector->addProvider(new RawProvider());
+$detector->addProvider(new DefaultProvider());
+
 echo $imageTypeDetector->getImageTypeFromFile($file)->toString();
 ```
 

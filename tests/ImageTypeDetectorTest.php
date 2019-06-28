@@ -6,6 +6,8 @@ use PHPUnit\Framework\TestCase;
 use Selective\ImageType\ImageType;
 use Selective\ImageType\ImageTypeDetector;
 use Selective\ImageType\ImageTypeDetectorException;
+use Selective\ImageType\Provider\DefaultProvider;
+use Selective\ImageType\Provider\RawProvider;
 use SplFileObject;
 use SplTempFileObject;
 
@@ -27,7 +29,11 @@ class ImageTypeDetectorTest extends TestCase
     public function testGetImageTypeFromFile(string $file, string $expected): void
     {
         $this->assertFileExists($file);
+
         $imageTypeDetector = new ImageTypeDetector();
+
+        $imageTypeDetector->addProvider(new RawProvider());
+        $imageTypeDetector->addProvider(new DefaultProvider());
 
         $file = new SplFileObject($file);
         $actual = $imageTypeDetector->getImageTypeFromFile($file);
