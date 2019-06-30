@@ -27,8 +27,8 @@ final class PefDetector implements DetectorInterface
             return null;
         }
 
-        $bytes = $file->fread(2);
+        $bytes = $file->fread(510);
 
-        return $bytes === "\0*" ? new ImageType(ImageType::PEF) : null;
+        return strpos($bytes, "PENTAX") !== false ? new ImageType(ImageType::PEF) : null;
     }
 }
