@@ -85,6 +85,8 @@ class ImageTypeDetectorTest extends TestCase
             [__DIR__ . '/images/test-iiro.orf', ImageType::ORF],
             [__DIR__ . '/images/test-iirs.orf', ImageType::ORF],
             [__DIR__ . '/images/test-mmor.orf', ImageType::ORF],
+            [__DIR__ . '/images/test-dng1.dng', ImageType::DNG],
+            [__DIR__ . '/images/test-dng2.dng', ImageType::DNG],
         ];
     }
 
