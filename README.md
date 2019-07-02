@@ -44,6 +44,10 @@ Image type detection library for PHP.
 * **ORF** (Olympus)
 * **DNG** (Digital Negative - Adobe)
 
+#### HDR
+
+* **CIN** (Cineon Image File Format, Kodak)
+
 ## Requirements
 
 * PHP 7.2+
