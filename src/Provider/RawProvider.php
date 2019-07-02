@@ -9,6 +9,7 @@ use Selective\ImageType\Detector\OrfDetector;
 use Selective\ImageType\Detector\PefDetector;
 use Selective\ImageType\Detector\Rw2Detector;
 use Selective\ImageType\Detector\DngDetector;
+use Selective\ImageType\Detector\CineonDetector;
 
 /**
  * Provider.
@@ -28,6 +29,7 @@ class RawProvider implements ProviderInterface
             new Rw2Detector(),
             new Fr3Detector(),
             new DngDetector(),
+            new CineonDetector(),
         ];
     }
 }
