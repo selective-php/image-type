@@ -42,6 +42,7 @@ Image type detection library for PHP.
 * **3FR** (Hasselblad)
 * **IIQ** (Phase One)
 * **ORF** (Olympus)
+* **DNG** (Digital Negative - Adobe)
 
 ## Requirements
 
