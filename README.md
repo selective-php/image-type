@@ -47,6 +47,7 @@ Image type detection library for PHP.
 #### HDR
 
 * **CIN** (Cineon Image File Format, Kodak)
+* **PFM** (Portable Float Map)
 
 ## Requirements
 
