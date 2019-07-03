@@ -36,6 +36,7 @@ Image type detection library for PHP.
 
 * **SVG** (Scalable Vector Graphics)
 * **AI** (Adobe Illustrator)
+* **WMF** (Windows Metafile Format)
 
 #### Compound
 

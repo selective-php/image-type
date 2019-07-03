@@ -37,6 +37,7 @@ class ImageType
     public const DNG = 'dng';
     public const CIN = 'cin';
     public const PFM = 'pfm';
+    public const WMF = 'wmf';
 
     /**
      * ImageType constructor.
