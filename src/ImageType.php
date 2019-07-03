@@ -38,6 +38,8 @@ class ImageType
     public const CIN = 'cin';
     public const PFM = 'pfm';
     public const WMF = 'wmf';
+    public const EMF = 'emf';
+    public const EMFPLUS = 'emf+';
 
     /**
      * ImageType constructor.

@@ -98,6 +98,10 @@ class ImageTypeDetectorTest extends TestCase
             [__DIR__ . '/images/test-cin2.cin', ImageType::CIN],
             [__DIR__ . '/images/test-pfm.pfm', ImageType::PFM],
             [__DIR__ . '/images/test.wmf', ImageType::WMF],
+            [__DIR__ . '/images/test.emf', ImageType::EMF],
+            [__DIR__ . '/images/test-2.emf', ImageType::EMF],
+            [__DIR__ . '/images/test-3.emf', ImageType::EMF],
+            [__DIR__ . '/images/test-emf-plus.emf', ImageType::EMFPLUS],
         ];
     }
 
