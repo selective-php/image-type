@@ -7,6 +7,7 @@ use Selective\ImageType\ImageType;
 use Selective\ImageType\ImageTypeDetector;
 use Selective\ImageType\ImageTypeDetectorException;
 use Selective\ImageType\Provider\DefaultProvider;
+use Selective\ImageType\Provider\HdrProvider;
 use Selective\ImageType\Provider\RawProvider;
 use SplFileObject;
 use SplTempFileObject;
@@ -30,13 +31,14 @@ class ImageTypeDetectorTest extends TestCase
     {
         $this->assertFileExists($file);
 
-        $imageTypeDetector = new ImageTypeDetector();
+        $detector = new ImageTypeDetector();
 
-        $imageTypeDetector->addProvider(new RawProvider());
-        $imageTypeDetector->addProvider(new DefaultProvider());
+        $detector->addProvider(new HdrProvider());
+        $detector->addProvider(new RawProvider());
+        $detector->addProvider(new DefaultProvider());
 
         $file = new SplFileObject($file);
-        $actual = $imageTypeDetector->getImageTypeFromFile($file);
+        $actual = $detector->getImageTypeFromFile($file);
 
         $this->assertSame($expected, $actual->toString());
         $this->assertTrue($actual->equals(new ImageType($expected)));
