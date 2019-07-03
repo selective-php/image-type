@@ -19,8 +19,6 @@ final class IcoDetector implements DetectorInterface
      */
     public function detect(SplFileObject $file): ?ImageType
     {
-        $file->rewind();
-
         return $file->fread(3) === "\0\0\1" ? new ImageType(ImageType::ICO) : null;
     }
 }

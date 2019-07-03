@@ -19,9 +19,8 @@ final class CineonDetector implements DetectorInterface
      */
     public function detect(SplFileObject $file): ?ImageType
     {
-        $file->rewind();
-        $bytes = bin2hex($file->fread(4) ?: "");
+        $bytes = bin2hex((string)$file->fread(4));
 
-        return $bytes === "802a5fd7" || $bytes === "d75f2a80" ? new ImageType(ImageType::CIN) : null;
+        return $bytes === '802a5fd7' || $bytes === 'd75f2a80' ? new ImageType(ImageType::CIN) : null;
     }
 }

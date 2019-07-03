@@ -19,7 +19,6 @@ final class OrfDetector implements DetectorInterface
      */
     public function detect(SplFileObject $file): ?ImageType
     {
-        $file->rewind();
         $bytes = $file->fread(4);
 
         return $bytes === 'IIRO' || $bytes === 'MMOR' || $bytes === 'IIRS' ? new ImageType(ImageType::ORF) : null;

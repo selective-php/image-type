@@ -19,8 +19,6 @@ final class JpegDetector implements DetectorInterface
      */
     public function detect(SplFileObject $file): ?ImageType
     {
-        $file->rewind();
-
         return $file->fread(2) === chr(0xFF) . chr(0xd8) ? new ImageType(ImageType::JPEG) : null;
     }
 }

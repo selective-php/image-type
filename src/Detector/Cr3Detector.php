@@ -19,7 +19,6 @@ final class Cr3Detector implements DetectorInterface
      */
     public function detect(SplFileObject $file): ?ImageType
     {
-        $file->rewind();
         $file->fread(4);
 
         $bytes = $file->fread(7);

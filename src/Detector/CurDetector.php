@@ -19,8 +19,6 @@ final class CurDetector implements DetectorInterface
      */
     public function detect(SplFileObject $file): ?ImageType
     {
-        $file->rewind();
-
         return $file->fread(3) === "\0\0\2" ? new ImageType(ImageType::CUR) : null;
     }
 }

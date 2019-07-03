@@ -19,8 +19,6 @@ final class BmpDetector implements DetectorInterface
      */
     public function detect(SplFileObject $file): ?ImageType
     {
-        $file->rewind();
-
         return $file->fread(2) === 'BM' ? new ImageType(ImageType::BMP) : null;
     }
 }

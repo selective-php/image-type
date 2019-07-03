@@ -70,6 +70,8 @@ final class ImageTypeDetector
     private function detectFile(SplFileObject $file): ?ImageType
     {
         foreach ($this->detectors as $detector) {
+            $file->rewind();
+
             $type = $detector->detect($file);
 
             if ($type !== null) {

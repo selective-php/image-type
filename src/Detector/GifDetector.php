@@ -19,8 +19,6 @@ final class GifDetector implements DetectorInterface
      */
     public function detect(SplFileObject $file): ?ImageType
     {
-        $file->rewind();
-
         return $file->fread(2) === 'GI' ? new ImageType(ImageType::GIF) : null;
     }
 }

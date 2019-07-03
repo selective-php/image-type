@@ -19,7 +19,6 @@ final class DngDetector implements DetectorInterface
      */
     public function detect(SplFileObject $file): ?ImageType
     {
-        $file->rewind();
         $bytes = $file->fread(2);
 
         // TIFF header
@@ -28,8 +27,9 @@ final class DngDetector implements DetectorInterface
         }
 
         $file->fread(6);
-        $bytes = $file->fread(12) ?: "";
+        $bytes = (string)$file->fread(12);
 
-        return ((strpos($bytes, "\x04") !== false || strpos($bytes, "\x02") !== false) && strpos($bytes, "\x01") && substr_count($bytes, "\0") >= 2) ? new ImageType(ImageType::DNG) : null;
+        return ((strpos($bytes, "\x04") !== false || strpos($bytes, "\x02") !== false) &&
+            strpos($bytes, "\x01") && substr_count($bytes, "\0") >= 2) ? new ImageType(ImageType::DNG) : null;
     }
 }

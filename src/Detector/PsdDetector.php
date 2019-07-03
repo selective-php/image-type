@@ -19,8 +19,6 @@ final class PsdDetector implements DetectorInterface
      */
     public function detect(SplFileObject $file): ?ImageType
     {
-        $file->rewind();
-
         return $file->fread(2) === '8B' ? new ImageType(ImageType::PSD) : null;
     }
 }

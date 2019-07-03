@@ -19,7 +19,6 @@ final class Cr2Detector implements DetectorInterface
      */
     public function detect(SplFileObject $file): ?ImageType
     {
-        $file->rewind();
         $bytes = $file->fread(2);
 
         // TIFF header

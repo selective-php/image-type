@@ -21,8 +21,7 @@ final class AiDetector implements DetectorInterface
      */
     public function detect(SplFileObject $file): ?ImageType
     {
-        $file->rewind();
-        $bytes = $file->fread(10) ?: '';
+        $bytes = (string)$file->fread(10);
 
         return $bytes === '%!PS-Adobe' ? new ImageType(ImageType::AI) : null;
     }

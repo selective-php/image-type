@@ -21,9 +21,8 @@ final class SwfDetector implements DetectorInterface
      */
     public function detect(SplFileObject $file): ?ImageType
     {
-        $file->rewind();
-        $compression = $file->fread(1) ?: '';
-        $signature = $file->fread(2) ?: '';
+        $compression = (string)$file->fread(1);
+        $signature = (string)$file->fread(2);
 
         $compressions = [
             'F' => 1,

@@ -19,8 +19,6 @@ final class HeicDetector implements DetectorInterface
      */
     public function detect(SplFileObject $file): ?ImageType
     {
-        $file->rewind();
-
         // Skip first 4 bytes
         $file->fread(4);
 

@@ -19,8 +19,7 @@ final class SvgDetector implements DetectorInterface
      */
     public function detect(SplFileObject $file): ?ImageType
     {
-        $file->rewind();
-        $bytes = $file->fread(4) ?: '';
+        $bytes = (string)$file->fread(4);
 
         return strtolower($bytes) === '<svg' ? new ImageType(ImageType::SVG) : null;
     }

@@ -19,7 +19,6 @@ final class Fr3Detector implements DetectorInterface
      */
     public function detect(SplFileObject $file): ?ImageType
     {
-        $file->rewind();
         $bytes = $file->fread(2);
 
         // TIFF header
@@ -27,8 +26,8 @@ final class Fr3Detector implements DetectorInterface
             return null;
         }
 
-        $bytes = $file->fread(512);
+        $bytes = (string)$file->fread(512);
 
-        return strpos($bytes ?: '', 'Hasselblad') > 10 ? new ImageType(ImageType::FR3) : null;
+        return strpos($bytes, 'Hasselblad') > 10 ? new ImageType(ImageType::FR3) : null;
     }
 }

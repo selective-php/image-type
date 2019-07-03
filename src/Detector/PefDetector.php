@@ -19,7 +19,6 @@ final class PefDetector implements DetectorInterface
      */
     public function detect(SplFileObject $file): ?ImageType
     {
-        $file->rewind();
         $bytes = $file->fread(2);
 
         // TIFF header
@@ -27,8 +26,8 @@ final class PefDetector implements DetectorInterface
             return null;
         }
 
-        $bytes = $file->fread(510);
+        $bytes = (string)$file->fread(510);
 
-        return strpos($bytes ?: '', "PENTAX") >= 6 ? new ImageType(ImageType::PEF) : null;
+        return strpos($bytes, 'PENTAX') >= 6 ? new ImageType(ImageType::PEF) : null;
     }
 }

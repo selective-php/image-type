@@ -19,9 +19,8 @@ final class PfmDetector implements DetectorInterface
      */
     public function detect(SplFileObject $file): ?ImageType
     {
-        $file->rewind();
-        $bytes = strtoupper((string) $file->fread(2));
+        $bytes = strtoupper((string)$file->fread(2));
 
-        return $bytes === "PF" ? new ImageType(ImageType::PFM) : null;
+        return $bytes === 'PF' ? new ImageType(ImageType::PFM) : null;
     }
 }

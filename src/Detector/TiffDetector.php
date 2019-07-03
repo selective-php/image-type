@@ -19,7 +19,6 @@ final class TiffDetector implements DetectorInterface
      */
     public function detect(SplFileObject $file): ?ImageType
     {
-        $file->rewind();
         $bytes = $file->fread(2);
 
         return $bytes === 'II' || $bytes === 'MM' ? new ImageType(ImageType::TIFF) : null;
