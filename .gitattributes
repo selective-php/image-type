@@ -63,3 +63,4 @@
 *.dng binary
 *.cin binary
 *.pfm binary
+*.ani binary

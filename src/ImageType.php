@@ -24,6 +24,7 @@ class ImageType
     public const SVG = 'svg';
     public const ICO = 'ico';
     public const CUR = 'cur';
+    public const ANI = 'ani';
     public const SWF = 'swf';
     public const AI = 'ai';
     public const HEIC = 'heic';
