@@ -20,13 +20,22 @@ final class EmfDetector implements DetectorInterface
     public function detect(SplFileObject $file): ?ImageType
     {
         $emrHeader = (string)$file->fread(4);
-        $file->fread(36);
+
+        if ($emrHeader !== "\1\0\0\0") {
+            return null;
+        }
+
+        $commentOffset = ord($file->fread(1));
+        $file->rewind();
+        $file->fread(40);
         $emfSignature = (string)$file->fread(4);
         $hasEmf = $emfSignature === ' EMF';
 
-        $emfPlusSignature = (string)$file->fread(512);
-        $hasEmfPlus = strpos($emfPlusSignature, 'EMF+') !== false;
+        $file->rewind();
+        $file->fread($commentOffset + 12);
+        $emfPlusSignature = (string)$file->fread(4);
+        $hasEmfPlus = $emfPlusSignature === 'EMF+';
 
-        return $emrHeader === "\1\0\0\0" && $hasEmf && !$hasEmfPlus ? new ImageType(ImageType::EMF) : null;
+        return $hasEmf && !$hasEmfPlus ? new ImageType(ImageType::EMF) : null;
     }
 }
