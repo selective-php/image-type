@@ -3,6 +3,7 @@
 namespace Selective\ImageType\Provider;
 
 use Selective\ImageType\Detector\AiDetector;
+use Selective\ImageType\Detector\AniDetector;
 use Selective\ImageType\Detector\BmpDetector;
 use Selective\ImageType\Detector\CurDetector;
 use Selective\ImageType\Detector\GifDetector;
@@ -17,9 +18,9 @@ use Selective\ImageType\Detector\TiffDetector;
 use Selective\ImageType\Detector\WebpDetector;
 
 /**
- * Provider.
+ * Raster Provider.
  */
-class DefaultProvider implements ProviderInterface
+class RasterProvider implements ProviderInterface
 {
     /**
      * {@inheritdoc}
@@ -37,6 +38,7 @@ class DefaultProvider implements ProviderInterface
             new HeicDetector(),
             new CurDetector(),
             new IcoDetector(),
+            new AniDetector(),
             new PsdDetector(),
             new SwfDetector(),
             new AiDetector(),

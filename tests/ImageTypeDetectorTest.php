@@ -6,9 +6,11 @@ use PHPUnit\Framework\TestCase;
 use Selective\ImageType\ImageType;
 use Selective\ImageType\ImageTypeDetector;
 use Selective\ImageType\ImageTypeDetectorException;
-use Selective\ImageType\Provider\DefaultProvider;
+use Selective\ImageType\Provider\CompoundProvider;
+use Selective\ImageType\Provider\RasterProvider;
 use Selective\ImageType\Provider\HdrProvider;
 use Selective\ImageType\Provider\RawProvider;
+use Selective\ImageType\Provider\VectorProvider;
 use SplFileObject;
 use SplTempFileObject;
 
@@ -33,9 +35,11 @@ class ImageTypeDetectorTest extends TestCase
 
         $detector = new ImageTypeDetector();
 
+        $detector->addProvider(new CompoundProvider());
+        $detector->addProvider(new VectorProvider());
         $detector->addProvider(new HdrProvider());
         $detector->addProvider(new RawProvider());
-        $detector->addProvider(new DefaultProvider());
+        $detector->addProvider(new RasterProvider());
 
         $file = new SplFileObject($file);
         $actual = $detector->getImageTypeFromFile($file);
@@ -71,6 +75,7 @@ class ImageTypeDetectorTest extends TestCase
             [__DIR__ . '/images/test.svg', ImageType::SVG],
             [__DIR__ . '/images/test.ico', ImageType::ICO],
             [__DIR__ . '/images/test.cur', ImageType::CUR],
+            [__DIR__ . '/images/test.ani', ImageType::ANI],
             [__DIR__ . '/images/test.ai', ImageType::AI],
             [__DIR__ . '/images/test.swf', ImageType::SWF],
             [__DIR__ . '/images/test-alpha.heic', ImageType::HEIC],
