@@ -11,7 +11,7 @@ use SplFileObject;
 final class CineonDetector implements DetectorInterface
 {
     /**
-     * DNG identification.
+     * CIN identification.
      *
      * @param SplFileObject $file The image file
      *

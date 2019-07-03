@@ -35,6 +35,7 @@ class ImageType
     public const ORF = 'orf';
     public const DNG = 'dng';
     public const CIN = 'cin';
+    public const PFM = 'pfm';
 
     /**
      * ImageType constructor.

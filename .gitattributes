@@ -62,3 +62,4 @@
 *.nef binary
 *.dng binary
 *.cin binary
+*.pfm binary
