@@ -68,4 +68,5 @@
 *.emf binary
 *.dpx binary
 *.jp2 binary
+*.jpm binary
 *.pdn binary

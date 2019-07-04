@@ -43,6 +43,7 @@ class ImageType
     public const DPX = 'dpx';
     public const JP2 = 'jp2';
     public const PDN = 'pdn';
+    public const JPM = 'jpm';
 
     /**
      * ImageType constructor.
