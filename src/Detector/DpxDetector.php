@@ -11,7 +11,7 @@ use SplFileObject;
 final class DpxDetector implements DetectorInterface
 {
     /**
-     * DPX identification.
+     * DPX Digital Picture Exchange identification.
      *
      * @param SplFileObject $file The image file
      *
@@ -19,9 +19,8 @@ final class DpxDetector implements DetectorInterface
      */
     public function detect(SplFileObject $file): ?ImageType
     {
-        $file->rewind();
         $bytes = (string)$file->fread(4);
 
-        return $bytes === "SDPX" || $bytes === "XPDS" ? new ImageType(ImageType::DPX) : null;
+        return $bytes === 'SDPX' || $bytes === 'XPDS' ? new ImageType(ImageType::DPX) : null;
     }
 }
