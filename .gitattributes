@@ -66,3 +66,4 @@
 *.ani binary
 *.wmf binary
 *.emf binary
+*.dpx binary

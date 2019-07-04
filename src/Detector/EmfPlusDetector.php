@@ -25,7 +25,7 @@ final class EmfPlusDetector implements DetectorInterface
             return null;
         }
 
-        $commentOffset = ord($file->fread(1));
+        $commentOffset = ord((string)$file->fread(1));
         $file->rewind();
         $file->fread(40);
         $emfSignature = (string)$file->fread(4);
