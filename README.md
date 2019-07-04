@@ -60,6 +60,7 @@ Image type detection library for PHP.
 
 * **CIN** (Cineon Image File Format, Kodak)
 * **PFM** (Portable Float Map)
+* **DPX** (Digital Picture Exchange)
 
 ## Requirements
 

@@ -40,6 +40,7 @@ class ImageType
     public const WMF = 'wmf';
     public const EMF = 'emf';
     public const EMFPLUS = 'emf+';
+    public const DPX = 'dpx';
 
     /**
      * ImageType constructor.
