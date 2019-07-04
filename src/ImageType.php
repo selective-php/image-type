@@ -42,6 +42,7 @@ class ImageType
     public const EMFPLUS = 'emf+';
     public const DPX = 'dpx';
     public const JP2 = 'jp2';
+    public const PDN = 'pdn';
 
     /**
      * ImageType constructor.

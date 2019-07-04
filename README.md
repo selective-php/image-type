@@ -32,6 +32,7 @@ Image type detection library for PHP.
 * **ANI** (Animated Cursor)
 * **HEIF** / **HEIC** (High Efficiency Image File Format) / Apple iPhone photos
 * **JPEG 2000**
+* **PDN** (PaintDotNet)
 
 #### Vector
 
