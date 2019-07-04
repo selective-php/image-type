@@ -31,6 +31,7 @@ Image type detection library for PHP.
 * **CUR** (Cursor)
 * **ANI** (Animated Cursor)
 * **HEIF** / **HEIC** (High Efficiency Image File Format) / Apple iPhone photos
+* **JPEG 2000**
 
 #### Vector
 

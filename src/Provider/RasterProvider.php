@@ -9,6 +9,7 @@ use Selective\ImageType\Detector\CurDetector;
 use Selective\ImageType\Detector\GifDetector;
 use Selective\ImageType\Detector\HeicDetector;
 use Selective\ImageType\Detector\IcoDetector;
+use Selective\ImageType\Detector\Jp2Detector;
 use Selective\ImageType\Detector\JpegDetector;
 use Selective\ImageType\Detector\PngDetector;
 use Selective\ImageType\Detector\PsdDetector;
@@ -42,6 +43,7 @@ class RasterProvider implements ProviderInterface
             new PsdDetector(),
             new SwfDetector(),
             new AiDetector(),
+            new Jp2Detector(),
         ];
     }
 }
