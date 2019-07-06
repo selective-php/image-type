@@ -13,6 +13,7 @@ use Selective\ImageType\Detector\IcoDetector;
 use Selective\ImageType\Detector\Jp2Detector;
 use Selective\ImageType\Detector\JpegDetector;
 use Selective\ImageType\Detector\JpmDetector;
+use Selective\ImageType\Detector\MngDetector;
 use Selective\ImageType\Detector\PdnDetector;
 use Selective\ImageType\Detector\PngDetector;
 use Selective\ImageType\Detector\PsdDetector;
@@ -31,7 +32,6 @@ use Selective\ImageType\Detector\XcfDetector;
  * PBM / PGM / PPM / PNM PCX PGF PICtor PNG PSD / PSB PSP QTVR RAS
  * RGBE Logluv TIFF SGI TGA TIFF TIFF/EP TIFF/IT UFO/ UFP WBMP
  * WebP XBM XCF XPM XWD
- *
  */
 class RasterProvider implements ProviderInterface
 {
@@ -60,6 +60,7 @@ class RasterProvider implements ProviderInterface
             new JpmDetector(),
             new DcmDetector(),
             new XcfDetector(),
+            new MngDetector(),
         ];
     }
 }

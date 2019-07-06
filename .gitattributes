@@ -72,3 +72,4 @@
 *.pdn binary
 *.dcm binary
 *.xcf binary
+*.mng binary

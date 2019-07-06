@@ -46,6 +46,7 @@ class ImageType
     public const JPM = 'jpm';
     public const DICOM = 'dcm';
     public const XCF = 'xcf';
+    public const MNG = 'mng';
 
     /**
      * ImageType constructor.

@@ -37,6 +37,7 @@ Image type detection library for PHP.
 * **JNG** (JPEG Network Graphics)
 * **DICOM** (Digital Imaging and Communications in Medicine)
 * **XCF** (eXperimental Computing Facility (GIMP))
+* **MNG** (Multiple-image Network Graphics)
 
 #### Vector
 
