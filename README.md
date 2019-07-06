@@ -34,7 +34,9 @@ Image type detection library for PHP.
 * **JPEG 2000**
 * **JPM** (JPEG 2000 compound image)
 * **PDN** (PaintDotNet)
+* **JNG** (JPEG Network Graphics)
 * **DICOM** (Digital Imaging and Communications in Medicine)
+* **XCF** (eXperimental Computing Facility (GIMP))
 
 #### Vector
 

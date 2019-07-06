@@ -20,9 +20,18 @@ use Selective\ImageType\Detector\SvgDetector;
 use Selective\ImageType\Detector\SwfDetector;
 use Selective\ImageType\Detector\TiffDetector;
 use Selective\ImageType\Detector\WebpDetector;
+use Selective\ImageType\Detector\XcfDetector;
 
 /**
  * Raster Provider.
+ *
+ * ANI ANIM APNG ART BMP BPG BSAVE CAL CIN CPC CPT DDS DPX ECW EXR FITS FLIC
+ * FLIF FPX GIF HDRi HEVC ICER ICNS ICO / CUR ICS ILBM JBIG JBIG2 JNG JPEG
+ * JPEG-LS JPEG 2000 JPEG XR JPEG XT JPEG-HDR KRA MNG MIFF NRRD ORA PAM
+ * PBM / PGM / PPM / PNM PCX PGF PICtor PNG PSD / PSB PSP QTVR RAS
+ * RGBE Logluv TIFF SGI TGA TIFF TIFF/EP TIFF/IT UFO/ UFP WBMP
+ * WebP XBM XCF XPM XWD
+ *
  */
 class RasterProvider implements ProviderInterface
 {
@@ -50,6 +59,7 @@ class RasterProvider implements ProviderInterface
             new PdnDetector(),
             new JpmDetector(),
             new DcmDetector(),
+            new XcfDetector(),
         ];
     }
 }

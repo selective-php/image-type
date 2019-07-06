@@ -71,3 +71,4 @@
 *.jpm binary
 *.pdn binary
 *.dcm binary
+*.xcf binary
