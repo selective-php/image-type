@@ -12,6 +12,8 @@ use Selective\ImageType\Detector\DngDetector;
 
 /**
  * Provider.
+ *
+ * CIFF DNG
  */
 class RawProvider implements ProviderInterface
 {

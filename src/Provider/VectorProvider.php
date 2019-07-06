@@ -10,6 +10,8 @@ use Selective\ImageType\Detector\WmfDetector;
 
 /**
  * Vector formats.
+ *
+ * AI CDR CGM DXF EVA EMF Gerber HVIF IGES PGML SVG VML WMF Xar
  */
 class VectorProvider implements ProviderInterface
 {
