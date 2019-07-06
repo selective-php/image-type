@@ -106,6 +106,7 @@ class ImageTypeDetectorTest extends TestCase
             [__DIR__ . '/images/test.jp2', ImageType::JP2],
             [__DIR__ . '/images/test.pdn', ImageType::PDN],
             [__DIR__ . '/images/test.jpm', ImageType::JPM],
+            [__DIR__ . '/images/test.dcm', ImageType::DICOM],
         ];
     }
 

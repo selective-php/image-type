@@ -34,6 +34,7 @@ Image type detection library for PHP.
 * **JPEG 2000**
 * **JPM** (JPEG 2000 compound image)
 * **PDN** (PaintDotNet)
+* **DICOM** (Digital Imaging and Communications in Medicine)
 
 #### Vector
 

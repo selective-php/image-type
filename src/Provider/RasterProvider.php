@@ -6,6 +6,7 @@ use Selective\ImageType\Detector\AiDetector;
 use Selective\ImageType\Detector\AniDetector;
 use Selective\ImageType\Detector\BmpDetector;
 use Selective\ImageType\Detector\CurDetector;
+use Selective\ImageType\Detector\DcmDetector;
 use Selective\ImageType\Detector\GifDetector;
 use Selective\ImageType\Detector\HeicDetector;
 use Selective\ImageType\Detector\IcoDetector;
@@ -48,6 +49,7 @@ class RasterProvider implements ProviderInterface
             new Jp2Detector(),
             new PdnDetector(),
             new JpmDetector(),
+            new DcmDetector(),
         ];
     }
 }
