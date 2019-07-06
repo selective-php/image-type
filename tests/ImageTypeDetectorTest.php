@@ -109,6 +109,7 @@ class ImageTypeDetectorTest extends TestCase
             [__DIR__ . '/images/test.dcm', ImageType::DICOM],
             [__DIR__ . '/images/test.xcf', ImageType::XCF],
             [__DIR__ . '/images/test.mng', ImageType::MNG],
+            [__DIR__ . '/images/test.psb', ImageType::PSB],
         ];
     }
 

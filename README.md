@@ -38,6 +38,7 @@ Image type detection library for PHP.
 * **DICOM** (Digital Imaging and Communications in Medicine)
 * **XCF** (eXperimental Computing Facility (GIMP))
 * **MNG** (Multiple-image Network Graphics)
+* **PSB** (Photoshop Large Document)
 
 #### Vector
 

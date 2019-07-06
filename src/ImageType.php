@@ -47,6 +47,7 @@ class ImageType
     public const DICOM = 'dcm';
     public const XCF = 'xcf';
     public const MNG = 'mng';
+    public const PSB = 'psb';
 
     /**
      * ImageType constructor.
