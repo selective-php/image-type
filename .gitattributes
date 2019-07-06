@@ -70,3 +70,4 @@
 *.jp2 binary
 *.jpm binary
 *.pdn binary
+*.dcm binary
