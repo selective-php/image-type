@@ -19,6 +19,6 @@ final class PsbDetector implements DetectorInterface
      */
     public function detect(SplFileObject $file): ?ImageType
     {
-        return $file->fread(5) === "8BPS\0\2" ? new ImageType(ImageType::PSB) : null;
+        return $file->fread(6) === "8BPS\0\2" ? new ImageType(ImageType::PSB) : null;
     }
 }

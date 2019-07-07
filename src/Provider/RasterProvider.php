@@ -16,6 +16,7 @@ use Selective\ImageType\Detector\JpmDetector;
 use Selective\ImageType\Detector\MngDetector;
 use Selective\ImageType\Detector\PdnDetector;
 use Selective\ImageType\Detector\PngDetector;
+use Selective\ImageType\Detector\PsbDetector;
 use Selective\ImageType\Detector\PsdDetector;
 use Selective\ImageType\Detector\SvgDetector;
 use Selective\ImageType\Detector\SwfDetector;
@@ -61,6 +62,7 @@ class RasterProvider implements ProviderInterface
             new DcmDetector(),
             new XcfDetector(),
             new MngDetector(),
+            new PsbDetector(),
         ];
     }
 }
