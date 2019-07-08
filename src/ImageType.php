@@ -49,6 +49,7 @@ class ImageType
     public const MNG = 'mng';
     public const PSB = 'psb';
     public const PBM = 'pbm';
+    public const EXR = 'exr';
 
     /**
      * ImageType constructor.
