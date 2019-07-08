@@ -74,3 +74,4 @@
 *.xcf binary
 *.mng binary
 *.psb binary
+*.pbm binary
