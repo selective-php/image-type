@@ -21,6 +21,6 @@ final class PbmDetector implements DetectorInterface
     {
         $bytes = (string)$file->fread(2);
 
-        return $bytes === "P1" || $bytes === "P4" ? new ImageType(ImageType::PBM) : null;
+        return $bytes === 'P1' || $bytes === 'P4' ? new ImageType(ImageType::PBM) : null;
     }
 }
