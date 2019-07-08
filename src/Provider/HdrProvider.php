@@ -4,6 +4,7 @@ namespace Selective\ImageType\Provider;
 
 use Selective\ImageType\Detector\CineonDetector;
 use Selective\ImageType\Detector\DpxDetector;
+use Selective\ImageType\Detector\PbmDetector;
 use Selective\ImageType\Detector\PfmDetector;
 
 /**
@@ -20,6 +21,8 @@ class HdrProvider implements ProviderInterface
             new CineonDetector(),
             new PfmDetector(),
             new DpxDetector(),
+            new PbmDetector(),
+            new PbmDetector(),
         ];
     }
 }
