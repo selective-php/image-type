@@ -75,3 +75,4 @@
 *.mng binary
 *.psb binary
 *.pbm binary
+*.exr binary
