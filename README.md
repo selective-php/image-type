@@ -70,6 +70,7 @@ Image type detection library for PHP.
 * **PFM** (Portable Float Map)
 * **DPX** (Digital Picture Exchange)
 * **PBM** (Portable Bit Map HDR)
+* **OpenEXR**
 
 ## Requirements
 
