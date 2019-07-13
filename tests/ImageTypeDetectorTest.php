@@ -112,6 +112,7 @@ class ImageTypeDetectorTest extends TestCase
             [__DIR__ . '/images/test.psb', ImageType::PSB],
             [__DIR__ . '/images/test.pbm', ImageType::PBM],
             [__DIR__ . '/images/test.exr', ImageType::EXR],
+            [__DIR__ . '/images/test-hdr.jpg', ImageType::JPEGHDR],
         ];
     }
 
