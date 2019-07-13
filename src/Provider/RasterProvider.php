@@ -24,6 +24,7 @@ use Selective\ImageType\Detector\TiffDetector;
 use Selective\ImageType\Detector\WebpDetector;
 use Selective\ImageType\Detector\XcfDetector;
 use Selective\ImageType\Detector\ExrDetector;
+use Selective\ImageType\Detector\JpegHdrDetector;
 
 /**
  * Raster Provider.
@@ -65,6 +66,7 @@ class RasterProvider implements ProviderInterface
             new MngDetector(),
             new PsbDetector(),
             new ExrDetector(),
+            new JpegHdrDetector(),
         ];
     }
 }
