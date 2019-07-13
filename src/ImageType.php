@@ -51,6 +51,7 @@ class ImageType
     public const PBM = 'pbm';
     public const EXR = 'exr';
     public const HDR = 'hdr';
+    public const JPEGHDR = 'jpeg';
 
     /**
      * ImageType constructor.
