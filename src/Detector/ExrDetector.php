@@ -21,6 +21,6 @@ final class ExrDetector implements DetectorInterface
     {
         $bytes = (string)$file->fread(4);
 
-        return bin2hex($bytes) === "762f3101" ? new ImageType(ImageType::EXR) : null;
+        return bin2hex($bytes) === '762f3101' ? new ImageType(ImageType::EXR) : null;
     }
 }

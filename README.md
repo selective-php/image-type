@@ -66,6 +66,8 @@ Image type detection library for PHP.
 
 #### HDR
 
+* **JPEG-HDR**
+* **Radiance HDR**
 * **CIN** (Cineon Image File Format, Kodak)
 * **PFM** (Portable Float Map)
 * **DPX** (Digital Picture Exchange)
@@ -123,6 +125,7 @@ echo $detector->getImageTypeFromFile($file)->toString();
 
 ## Similar libraries
 
+* https://github.com/exiftool/exiftool
 * https://github.com/willwashburn/fasterimage
 
 ## License
