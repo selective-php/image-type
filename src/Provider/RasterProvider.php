@@ -23,6 +23,7 @@ use Selective\ImageType\Detector\SwfDetector;
 use Selective\ImageType\Detector\TiffDetector;
 use Selective\ImageType\Detector\WebpDetector;
 use Selective\ImageType\Detector\XcfDetector;
+use Selective\ImageType\Detector\PgmDetector;
 
 /**
  * Raster Provider.
@@ -63,6 +64,7 @@ class RasterProvider implements ProviderInterface
             new XcfDetector(),
             new MngDetector(),
             new PsbDetector(),
+            new PgmDetector(),
         ];
     }
 }

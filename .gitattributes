@@ -77,3 +77,4 @@
 *.pbm binary
 *.exr binary
 *.hdr binary
+*.pgm binary
