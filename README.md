@@ -39,6 +39,8 @@ Image type detection library for PHP.
 * **XCF** (eXperimental Computing Facility (GIMP))
 * **MNG** (Multiple-image Network Graphics)
 * **PSB** (Photoshop Large Document)
+* **PPM** (Portable Pixelmap)
+* **PGM** (Portable Graymap)
 
 #### Vector
 
