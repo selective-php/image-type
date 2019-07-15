@@ -53,6 +53,7 @@ class ImageType
     public const HDR = 'hdr';
     public const JPEGHDR = 'jpeg';
     public const PGM = 'pgm';
+    public const PPM = 'ppm';
 
     /**
      * ImageType constructor.
