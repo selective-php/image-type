@@ -3,7 +3,7 @@
 return PhpCsFixer\Config::create()
   ->setUsingCache(false)
   ->setRiskyAllowed(true)
-  ->setCacheFile(__DIR__ . '/.php_cs.cache')
+  //->setCacheFile(__DIR__ . '/.php_cs.cache')
   ->setRules([
     '@PSR1' => true,
     '@PSR2' => true,

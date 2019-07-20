@@ -11,7 +11,9 @@ use SplFileObject;
 final class CineonDetector implements DetectorInterface
 {
     /**
-     * CIN identification.
+     * CIN (Cineon Image File Format) identification.
+     *
+     * https://hwiegman.home.xs4all.nl/fileformats/dpx/Cineon%20Image%20File%20Format%20Draft%20and%20Data%20Structures.htm
      *
      * @param SplFileObject $file The image file
      *

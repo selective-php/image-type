@@ -101,7 +101,7 @@ class ImageTypeDetectorTest extends TestCase
             [__DIR__ . '/images/test.emf', ImageType::EMF],
             [__DIR__ . '/images/test-2.emf', ImageType::EMF],
             [__DIR__ . '/images/test-3.emf', ImageType::EMF],
-            [__DIR__ . '/images/test-emf-plus.emf', ImageType::EMFPLUS],
+            [__DIR__ . '/images/test-emf-plus.emf', ImageType::EMF_PLUS],
             [__DIR__ . '/images/test-1.dpx', ImageType::DPX],
             [__DIR__ . '/images/test.jp2', ImageType::JP2],
             [__DIR__ . '/images/test.pdn', ImageType::PDN],
@@ -114,7 +114,7 @@ class ImageTypeDetectorTest extends TestCase
             [__DIR__ . '/images/test.ppm', ImageType::PPM],
             [__DIR__ . '/images/test.exr', ImageType::EXR],
             [__DIR__ . '/images/test-hdr1.hdr', ImageType::HDR],
-            [__DIR__ . '/images/test-hdr.jpg', ImageType::JPEGHDR],
+            [__DIR__ . '/images/test-hdr.jpg', ImageType::JPEG_HDR],
             [__DIR__ . '/images/test.pgm', ImageType::PGM],
         ];
     }

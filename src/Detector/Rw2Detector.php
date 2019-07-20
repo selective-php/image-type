@@ -11,7 +11,7 @@ use SplFileObject;
 final class Rw2Detector implements DetectorInterface
 {
     /**
-     * RW2 (Panasonic ) RAW format identification.
+     * RW2 (Panasonic) RAW format identification.
      *
      * @param SplFileObject $file The image file
      *

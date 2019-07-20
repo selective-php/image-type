@@ -11,7 +11,7 @@ use SplFileObject;
 final class PfmDetector implements DetectorInterface
 {
     /**
-     * PFM identification.
+     * PFM Portable Float Map (HDR) identification.
      *
      * @param SplFileObject $file The image file
      *

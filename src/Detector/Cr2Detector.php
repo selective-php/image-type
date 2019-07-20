@@ -11,7 +11,7 @@ use SplFileObject;
 final class Cr2Detector implements DetectorInterface
 {
     /**
-     * CR2 Cannon RAW format identification.
+     * CR2 Canon RAW format identification.
      *
      * @param SplFileObject $file The image file
      *

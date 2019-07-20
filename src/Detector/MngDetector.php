@@ -11,7 +11,7 @@ use SplFileObject;
 final class MngDetector implements DetectorInterface
 {
     /**
-     * MNG identification.
+     * MNG (Multiple-image Network Graphics) identification.
      *
      * @param SplFileObject $file The image file
      *

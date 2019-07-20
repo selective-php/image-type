@@ -36,6 +36,6 @@ final class EmfPlusDetector implements DetectorInterface
         $emfPlusSignature = (string)$file->fread(4);
         $hasEmfPlus = $emfPlusSignature === 'EMF+';
 
-        return $hasEmf && $hasEmfPlus ? new ImageType(ImageType::EMFPLUS) : null;
+        return $hasEmf && $hasEmfPlus ? new ImageType(ImageType::EMF_PLUS) : null;
     }
 }

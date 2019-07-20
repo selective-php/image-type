@@ -21,6 +21,6 @@ final class JpegHdrDetector implements DetectorInterface
     {
         $bytes = (string)$file->fread(50);
 
-        return (strpos($bytes, 'HDR_RI') !== false && strpos($bytes, 'ver=11') !== false) ? new ImageType(ImageType::JPEGHDR) : null;
+        return (strpos($bytes, 'HDR_RI') !== false && strpos($bytes, 'ver=11') !== false) ? new ImageType(ImageType::JPEG_HDR) : null;
     }
 }

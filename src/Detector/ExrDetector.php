@@ -11,7 +11,7 @@ use SplFileObject;
 final class ExrDetector implements DetectorInterface
 {
     /**
-     * EXR identification.
+     * OpenEXR identification.
      *
      * @param SplFileObject $file The image file
      *
