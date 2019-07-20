@@ -33,26 +33,26 @@ final class HeicDetector implements DetectorInterface
         // Source: https://github.com/strukturag/libheif/issues/83
         $ccCodes = [
             // Usual HEIF images
-            'heic' => 1,
+            'heic' => ImageType::HEIC,
             // 10bit images, or anything that uses h265 with range extension
-            'heix' => 1,
+            'heix' => ImageType::HEIC,
             // Brands for image sequences
-            'hevc' => 1,
-            'hevx' => 1,
+            'hevc' => ImageType::HEIC_SEQUENCE,
+            'hevx' => ImageType::HEIC_SEQUENCE,
             // Multiview
-            'heim' => 1,
+            'heim' => ImageType::HEIC,
             // Scalable
-            'heis' => 1,
+            'heis' => ImageType::HEIC,
             // Multiview sequence
-            'hevm' => 1,
+            'hevm' => ImageType::HEIC_SEQUENCE,
             // Scalable sequence
-            'hevs' => 1,
+            'hevs' => ImageType::HEIC_SEQUENCE,
             // Special brands
-            'mif1' => 1,
+            'mif1' => ImageType::HEIC,
             // Equivalent case for image sequences
-            'msf1' => 1,
+            'msf1' => ImageType::HEIC_SEQUENCE,
         ];
 
-        return $bytes === 'ftyp' && isset($ccCodes[$ccCode]) ? new ImageType(ImageType::HEIC) : null;
+        return $bytes === 'ftyp' && isset($ccCodes[$ccCode]) ? new ImageType($ccCodes[$ccCode]) : null;
     }
 }
