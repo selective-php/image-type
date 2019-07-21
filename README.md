@@ -92,7 +92,7 @@ composer require selective/image-type
 
 ```php
 use Selective\ImageType\ImageTypeDetector;
-use Selective\ImageType\Provider\DefaultProvider;
+use Selective\ImageType\Provider\RasterProvider;
 use Selective\ImageType\Provider\HdrProvider;
 use Selective\ImageType\Provider\RawProvider;
 use SplFileObject;
@@ -104,7 +104,7 @@ $detector = new ImageTypeDetector();
 // Add image detectors
 $detector->addProvider(new HdrProvider());
 $detector->addProvider(new RawProvider());
-$detector->addProvider(new DefaultProvider());
+$detector->addProvider(new RasterProvider());
 
 echo $detector->getImageTypeFromFile($file)->toString(); // jpeg
 ```
@@ -123,6 +123,25 @@ $detector->addProvider(new RawProvider());
 $detector->addProvider(new DefaultProvider());
 
 echo $detector->getImageTypeFromFile($file)->toString();
+```
+
+### Detect mime type of file
+
+```php
+use Selective\ImageType\ImageTypeDetector;
+use Selective\ImageType\Provider\RasterProvider;
+use Selective\ImageType\Provider\HdrProvider;
+use Selective\ImageType\Provider\RawProvider;
+use SplFileObject;
+
+$file = new SplFileObject('example.jpg');
+
+$detector = new ImageTypeDetector();
+
+// Add image detectors
+$detector->addProvider(new RasterProvider());
+
+echo $detector->getImageTypeFromFile($file)->toString(); // image/jpeg
 ```
 
 ## Similar libraries

@@ -3,6 +3,7 @@
 namespace Selective\ImageType;
 
 use Selective\ImageType\Detector\DetectorInterface;
+use Selective\ImageType\Exception\MimeTypeNotFoundException;
 use Selective\ImageType\Provider\ProviderInterface;
 use SplFileObject;
 
@@ -58,6 +59,29 @@ final class ImageTypeDetector
         }
 
         return $type;
+    }
+
+    /**
+     * Detect mime type.
+     *
+     * @param SplFileObject $file The image file
+     *
+     * @throws ImageTypeDetectorException
+     * @throws MimeTypeNotFoundException
+     *
+     * @return string The mime type
+     */
+    public function getMimeTypeFromFile(SplFileObject $file): string
+    {
+        $type = $this->detectFile($file);
+
+        if ($type === null) {
+            throw new ImageTypeDetectorException('Image type could not be detected');
+        }
+
+        $mimeTypeDetector = new MimeTypeDetector();
+
+        return $mimeTypeDetector->getMimeType($type);
     }
 
     /**

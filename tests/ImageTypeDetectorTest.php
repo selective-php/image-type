@@ -20,6 +20,24 @@ use SplTempFileObject;
 class ImageTypeDetectorTest extends TestCase
 {
     /**
+     * Create instance.
+     *
+     * @return ImageTypeDetector The detector
+     */
+    private function createDetector(): ImageTypeDetector
+    {
+        $detector = new ImageTypeDetector();
+
+        $detector->addProvider(new CompoundProvider());
+        $detector->addProvider(new VectorProvider());
+        $detector->addProvider(new HdrProvider());
+        $detector->addProvider(new RawProvider());
+        $detector->addProvider(new RasterProvider());
+
+        return $detector;
+    }
+
+    /**
      * Test.
      *
      * @dataProvider providerGetImageTypeFromFile
@@ -33,19 +51,34 @@ class ImageTypeDetectorTest extends TestCase
     {
         $this->assertFileExists($file);
 
-        $detector = new ImageTypeDetector();
-
-        $detector->addProvider(new CompoundProvider());
-        $detector->addProvider(new VectorProvider());
-        $detector->addProvider(new HdrProvider());
-        $detector->addProvider(new RawProvider());
-        $detector->addProvider(new RasterProvider());
-
+        $detector = $this->createDetector();
         $file = new SplFileObject($file);
         $actual = $detector->getImageTypeFromFile($file);
 
         $this->assertSame($expected, $actual->toString());
         $this->assertTrue($actual->equals(new ImageType($expected)));
+    }
+
+    /**
+     * Test.
+     *
+     * @dataProvider providerGetImageTypeFromFile
+     *
+     * @param string $file The file
+     * @param string $expected The expected value
+     *
+     * @return void
+     */
+    public function testGetMimeTypeFromFile(string $file, string $expected): void
+    {
+        $this->assertFileExists($file);
+
+        $detector = $this->createDetector();
+        $file = new SplFileObject($file);
+        $actual = $detector->getMimeTypeFromFile($file);
+
+        $this->assertNotEmpty($actual);
+        $this->assertContains('/', $actual);
     }
 
     /**
@@ -56,66 +89,66 @@ class ImageTypeDetectorTest extends TestCase
     public function providerGetImageTypeFromFile(): array
     {
         return [
-            [__DIR__ . '/images/test.gif', ImageType::GIF],
-            [__DIR__ . '/images/test.jpg', ImageType::JPEG],
-            [__DIR__ . '/images/test-animated.gif', ImageType::GIF],
-            [__DIR__ . '/images/test-bmp8.bmp', ImageType::BMP],
-            [__DIR__ . '/images/test-bmp24.bmp', ImageType::BMP],
-            [__DIR__ . '/images/test-png8.png', ImageType::PNG],
-            [__DIR__ . '/images/test-png24.png', ImageType::PNG],
-            [__DIR__ . '/images/test-png32.png', ImageType::PNG],
-            [__DIR__ . '/images/test-tiff8.tif', ImageType::TIFF],
-            [__DIR__ . '/images/test-tiff24.tif', ImageType::TIFF],
-            [__DIR__ . '/images/test-tiff32.tif', ImageType::TIFF],
-            [__DIR__ . '/images/test.iiq', ImageType::TIFF],
-            [__DIR__ . '/images/test-phase-one.iiq', ImageType::TIFF],
-            [__DIR__ . '/images/test.psd', ImageType::PSD],
-            [__DIR__ . '/images/test.webp', ImageType::WEBP],
-            [__DIR__ . '/images/test2.webp', ImageType::WEBP],
-            [__DIR__ . '/images/test.svg', ImageType::SVG],
-            [__DIR__ . '/images/test.ico', ImageType::ICO],
-            [__DIR__ . '/images/test.cur', ImageType::CUR],
-            [__DIR__ . '/images/test.ani', ImageType::ANI],
             [__DIR__ . '/images/test.ai', ImageType::AI],
-            [__DIR__ . '/images/test.swf', ImageType::SWF],
-            [__DIR__ . '/images/test-alpha.heic', ImageType::HEIC],
-            [__DIR__ . '/images/test-animation.heic', ImageType::HEIC_SEQUENCE],
-            [__DIR__ . '/images/test-raw.cr3', ImageType::CR3],
-            [__DIR__ . '/images/test-raw2.cr3', ImageType::CR3],
-            [__DIR__ . '/images/test-mif1.heic', ImageType::HEIC],
-            [__DIR__ . '/images/test-panasonic-lumix-dmc-lx3-01.rw2', ImageType::RW2],
-            [__DIR__ . '/images/test-raw-pentax-k10D-srgb.pef', ImageType::PEF],
+            [__DIR__ . '/images/test.ani', ImageType::ANI],
             [__DIR__ . '/images/test.cr2', ImageType::CR2],
+            [__DIR__ . '/images/test.cur', ImageType::CUR],
+            [__DIR__ . '/images/test.dcm', ImageType::DICOM],
+            [__DIR__ . '/images/test.emf', ImageType::EMF],
+            [__DIR__ . '/images/test.exr', ImageType::EXR],
+            [__DIR__ . '/images/test.gif', ImageType::GIF],
+            [__DIR__ . '/images/test.ico', ImageType::ICO],
+            [__DIR__ . '/images/test.iiq', ImageType::TIFF],
+            [__DIR__ . '/images/test.jp2', ImageType::JP2],
+            [__DIR__ . '/images/test.jpg', ImageType::JPEG],
+            [__DIR__ . '/images/test.jpm', ImageType::JPM],
+            [__DIR__ . '/images/test.mng', ImageType::MNG],
+            [__DIR__ . '/images/test.pbm', ImageType::PBM],
+            [__DIR__ . '/images/test.pdn', ImageType::PDN],
+            [__DIR__ . '/images/test.pgm', ImageType::PGM],
+            [__DIR__ . '/images/test.ppm', ImageType::PPM],
+            [__DIR__ . '/images/test.psb', ImageType::PSB],
+            [__DIR__ . '/images/test.psd', ImageType::PSD],
+            [__DIR__ . '/images/test.svg', ImageType::SVG],
+            [__DIR__ . '/images/test.swf', ImageType::SWF],
+            [__DIR__ . '/images/test.webp', ImageType::WEBP],
+            [__DIR__ . '/images/test.wmf', ImageType::WMF],
+            [__DIR__ . '/images/test.xcf', ImageType::XCF],
+            [__DIR__ . '/images/test-1.dpx', ImageType::DPX],
             [__DIR__ . '/images/test-1a-1.3fr', ImageType::FR3],
             [__DIR__ . '/images/test-1a-2.3fr', ImageType::FR3],
             [__DIR__ . '/images/test-1b.3fr', ImageType::FR3],
-            [__DIR__ . '/images/test-iiro.orf', ImageType::ORF],
-            [__DIR__ . '/images/test-iirs.orf', ImageType::ORF],
-            [__DIR__ . '/images/test-mmor.orf', ImageType::ORF],
-            [__DIR__ . '/images/test-dng1.dng', ImageType::DNG],
-            [__DIR__ . '/images/test-dng2.dng', ImageType::DNG],
+            [__DIR__ . '/images/test-2.emf', ImageType::EMF],
+            [__DIR__ . '/images/test2.webp', ImageType::WEBP],
+            [__DIR__ . '/images/test-3.emf', ImageType::EMF],
+            [__DIR__ . '/images/test-alpha.heic', ImageType::HEIC],
+            [__DIR__ . '/images/test-animated.gif', ImageType::GIF],
+            [__DIR__ . '/images/test-animation.heic', ImageType::HEIC_SEQUENCE],
+            [__DIR__ . '/images/test-bmp24.bmp', ImageType::BMP],
+            [__DIR__ . '/images/test-bmp8.bmp', ImageType::BMP],
             [__DIR__ . '/images/test-cin1.cin', ImageType::CIN],
             [__DIR__ . '/images/test-cin2.cin', ImageType::CIN],
-            [__DIR__ . '/images/test-pfm.pfm', ImageType::PFM],
-            [__DIR__ . '/images/test.wmf', ImageType::WMF],
-            [__DIR__ . '/images/test.emf', ImageType::EMF],
-            [__DIR__ . '/images/test-2.emf', ImageType::EMF],
-            [__DIR__ . '/images/test-3.emf', ImageType::EMF],
+            [__DIR__ . '/images/test-dng1.dng', ImageType::DNG],
+            [__DIR__ . '/images/test-dng2.dng', ImageType::DNG],
             [__DIR__ . '/images/test-emf-plus.emf', ImageType::EMF_PLUS],
-            [__DIR__ . '/images/test-1.dpx', ImageType::DPX],
-            [__DIR__ . '/images/test.jp2', ImageType::JP2],
-            [__DIR__ . '/images/test.pdn', ImageType::PDN],
-            [__DIR__ . '/images/test.jpm', ImageType::JPM],
-            [__DIR__ . '/images/test.dcm', ImageType::DICOM],
-            [__DIR__ . '/images/test.xcf', ImageType::XCF],
-            [__DIR__ . '/images/test.mng', ImageType::MNG],
-            [__DIR__ . '/images/test.psb', ImageType::PSB],
-            [__DIR__ . '/images/test.pbm', ImageType::PBM],
-            [__DIR__ . '/images/test.ppm', ImageType::PPM],
-            [__DIR__ . '/images/test.exr', ImageType::EXR],
-            [__DIR__ . '/images/test-hdr1.hdr', ImageType::HDR],
             [__DIR__ . '/images/test-hdr.jpg', ImageType::JPEG_HDR],
-            [__DIR__ . '/images/test.pgm', ImageType::PGM],
+            [__DIR__ . '/images/test-hdr1.hdr', ImageType::HDR],
+            [__DIR__ . '/images/test-iiro.orf', ImageType::ORF],
+            [__DIR__ . '/images/test-iirs.orf', ImageType::ORF],
+            [__DIR__ . '/images/test-mif1.heic', ImageType::HEIC],
+            [__DIR__ . '/images/test-mmor.orf', ImageType::ORF],
+            [__DIR__ . '/images/test-panasonic-lumix-dmc-lx3-01.rw2', ImageType::RW2],
+            [__DIR__ . '/images/test-pfm.pfm', ImageType::PFM],
+            [__DIR__ . '/images/test-phase-one.iiq', ImageType::TIFF],
+            [__DIR__ . '/images/test-png24.png', ImageType::PNG],
+            [__DIR__ . '/images/test-png32.png', ImageType::PNG],
+            [__DIR__ . '/images/test-png8.png', ImageType::PNG],
+            [__DIR__ . '/images/test-raw.cr3', ImageType::CR3],
+            [__DIR__ . '/images/test-raw2.cr3', ImageType::CR3],
+            [__DIR__ . '/images/test-raw-pentax-k10D-srgb.pef', ImageType::PEF],
+            [__DIR__ . '/images/test-tiff24.tif', ImageType::TIFF],
+            [__DIR__ . '/images/test-tiff32.tif', ImageType::TIFF],
+            [__DIR__ . '/images/test-tiff8.tif', ImageType::TIFF],
         ];
     }
 
