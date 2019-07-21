@@ -95,6 +95,7 @@ use Selective\ImageType\ImageTypeDetector;
 use Selective\ImageType\Provider\RasterProvider;
 use Selective\ImageType\Provider\HdrProvider;
 use Selective\ImageType\Provider\RawProvider;
+use Selective\ImageType\Provider\VectorProvider;
 use SplFileObject;
 
 $file = new SplFileObject('example.jpg');
@@ -104,6 +105,7 @@ $detector = new ImageTypeDetector();
 // Add image detectors
 $detector->addProvider(new HdrProvider());
 $detector->addProvider(new RawProvider());
+$detector->addProvider(new VectorProvider());
 $detector->addProvider(new RasterProvider());
 
 echo $detector->getImageTypeFromFile($file)->toString(); // jpeg
@@ -119,8 +121,7 @@ $image->fwrite('my file content');
 $detector = new ImageTypeDetector();
 
 // Add image detectors
-$detector->addProvider(new RawProvider());
-$detector->addProvider(new DefaultProvider());
+$detector->addProvider(new RasterProvider());
 
 echo $detector->getImageTypeFromFile($file)->toString();
 ```
