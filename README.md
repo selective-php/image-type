@@ -130,8 +130,6 @@ echo $detector->getImageTypeFromFile($file)->toString();
 ```php
 use Selective\ImageType\ImageTypeDetector;
 use Selective\ImageType\Provider\RasterProvider;
-use Selective\ImageType\Provider\HdrProvider;
-use Selective\ImageType\Provider\RawProvider;
 use SplFileObject;
 
 $file = new SplFileObject('example.jpg');
@@ -141,7 +139,7 @@ $detector = new ImageTypeDetector();
 // Add image detectors
 $detector->addProvider(new RasterProvider());
 
-echo $detector->getImageTypeFromFile($file)->toString(); // image/jpeg
+echo $detector->getMimeTypeFromFile($file)->toString(); // image/jpeg
 ```
 
 ## Similar libraries
