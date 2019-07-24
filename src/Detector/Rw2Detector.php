@@ -2,7 +2,9 @@
 
 namespace Selective\ImageType\Detector;
 
+use Selective\ImageType\ImageFormat;
 use Selective\ImageType\ImageType;
+use Selective\ImageType\MimeType;
 use SplFileObject;
 
 /**
@@ -28,6 +30,6 @@ final class Rw2Detector implements DetectorInterface
 
         $bytes = $file->fread(2);
 
-        return $bytes === "U\0" ? new ImageType(ImageType::RW2) : null;
+        return $bytes === "U\0" ? new ImageType(ImageFormat::RW2, MimeType::IMAGE_X_PANASONIC_RW_2) : null;
     }
 }

@@ -2,7 +2,9 @@
 
 namespace Selective\ImageType\Detector;
 
+use Selective\ImageType\ImageFormat;
 use Selective\ImageType\ImageType;
+use Selective\ImageType\MimeType;
 use SplFileObject;
 
 /**
@@ -21,6 +23,7 @@ final class PgmDetector implements DetectorInterface
     {
         $bytes = (string)$file->fread(2);
 
-        return $bytes === 'P2' || $bytes === 'P5' ? new ImageType(ImageType::PGM) : null;
+        return $bytes === 'P2' || $bytes === 'P5' ?
+            new ImageType(ImageFormat::PGM, MimeType::IMAGE_X_PORTABLE_GRAYMAP) : null;
     }
 }

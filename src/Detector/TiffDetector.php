@@ -2,7 +2,9 @@
 
 namespace Selective\ImageType\Detector;
 
+use Selective\ImageType\ImageFormat;
 use Selective\ImageType\ImageType;
+use Selective\ImageType\MimeType;
 use SplFileObject;
 
 /**
@@ -21,6 +23,6 @@ final class TiffDetector implements DetectorInterface
     {
         $bytes = $file->fread(2);
 
-        return $bytes === 'II' || $bytes === 'MM' ? new ImageType(ImageType::TIFF) : null;
+        return $bytes === 'II' || $bytes === 'MM' ? new ImageType(ImageFormat::TIFF, MimeType::IMAGE_TIFF) : null;
     }
 }

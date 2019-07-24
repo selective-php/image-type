@@ -108,7 +108,13 @@ $detector->addProvider(new RawProvider());
 $detector->addProvider(new VectorProvider());
 $detector->addProvider(new RasterProvider());
 
-echo $detector->getImageTypeFromFile($file)->toString(); // jpeg
+$imageType = $detector->getImageTypeFromFile($file);
+
+// Get the image format
+echo $imageType->getFormat(); // jpeg
+
+// Get the mime type
+echo $imageType->getMimeType(); // image/jpeg
 ```
 
 ### Detect the image type of in-memory object
@@ -123,24 +129,7 @@ $detector = new ImageTypeDetector();
 // Add image detectors
 $detector->addProvider(new RasterProvider());
 
-echo $detector->getImageTypeFromFile($file)->toString();
-```
-
-### Detect mime type of file
-
-```php
-use Selective\ImageType\ImageTypeDetector;
-use Selective\ImageType\Provider\RasterProvider;
-use SplFileObject;
-
-$file = new SplFileObject('example.jpg');
-
-$detector = new ImageTypeDetector();
-
-// Add image detectors
-$detector->addProvider(new RasterProvider());
-
-echo $detector->getMimeTypeFromFile($file)->toString(); // image/jpeg
+echo $detector->getImageTypeFromFile($file)->getFormat();
 ```
 
 ## Similar libraries

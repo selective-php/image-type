@@ -5,89 +5,58 @@ namespace Selective\ImageType;
 use InvalidArgumentException;
 
 /**
- * Image format constants.
+ * Image type value object.
  */
-class ImageType
+final class ImageType
 {
     /**
-     * @var string The value
+     * @var string The image format
      */
-    private $type;
+    private $format;
 
-    public const AI = 'ai';
-    public const ANI = 'ani';
-    public const BMP = 'bmp';
-    public const CIN = 'cin';
-    public const CR2 = 'cr2';
-    public const CR3 = 'cr3';
-    public const CUR = 'cur';
-    public const DICOM = 'dcm';
-    public const DNG = 'dng';
-    public const DPX = 'dpx';
-    public const EMF = 'emf';
-    public const EMF_PLUS = 'emf+';
-    public const EXR = 'exr';
-    public const FR3 = '3FR';
-    public const GIF = 'gif';
-    public const HDR = 'hdr';
-    public const HEIC = 'heic';
-    public const HEIC_SEQUENCE = 'heic-sequence';
-    public const ICO = 'ico';
-    public const JP2 = 'jp2';
-    public const JPEG = 'jpeg';
-    public const JPEG_HDR = 'jpeg';
-    public const JPM = 'jpm';
-    public const MNG = 'mng';
-    public const ORF = 'orf';
-    public const PBM = 'pbm';
-    public const PDN = 'pdn';
-    public const PEF = 'pef';
-    public const PFM = 'pfm';
-    public const PGM = 'pgm';
-    public const PNG = 'png';
-    public const PPM = 'ppm';
-    public const PSB = 'psb';
-    public const PSD = 'psd';
-    public const RW2 = 'rw2';
-    public const SVG = 'svg';
-    public const SWF = 'swf';
-    public const TIFF = 'tiff';
-    public const WEBP = 'webp';
-    public const WMF = 'wmf';
-    public const XCF = 'xcf';
+    /**
+     * @var string The mime type
+     */
+    private $mime;
 
     /**
      * ImageType constructor.
      *
-     * @param string $type The image format
+     * @param string $format The image format
+     * @param string $mime The mime type
      */
-    public function __construct(string $type)
+    public function __construct(string $format, string $mime)
     {
-        if (empty($type)) {
-            throw new InvalidArgumentException(sprintf('Invalid type: %s', $type));
+        if (empty($format)) {
+            throw new InvalidArgumentException(sprintf('Invalid type: %s', $format));
         }
 
-        $this->type = $type;
+        if (empty($mime)) {
+            throw new InvalidArgumentException(sprintf('Invalid mime type: %s', $format));
+        }
+
+        $this->format = $format;
+        $this->mime = $mime;
     }
 
     /**
-     * Format to string.
+     * Get image format.
      *
-     * @return string The type
+     * @return string The image format
      */
-    public function toString(): string
+    public function getFormat(): string
     {
-        return $this->type;
+        return $this->format;
     }
 
     /**
-     * Format to string.
+     * Get mime type.
      *
-     * @return string The type
+     * @return string The mime type
      */
-    public function __toString()
+    public function getMimeType(): string
     {
-        return $this->toString();
+        return $this->mime;
     }
 
     /**
@@ -99,6 +68,7 @@ class ImageType
      */
     public function equals(ImageType $other): bool
     {
-        return $this->type === $other->type;
+        return $this->format === $other->format &&
+            $this->mime === $other->mime;
     }
 }

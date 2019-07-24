@@ -2,7 +2,9 @@
 
 namespace Selective\ImageType\Detector;
 
+use Selective\ImageType\ImageFormat;
 use Selective\ImageType\ImageType;
+use Selective\ImageType\MimeType;
 use SplFileObject;
 
 /**
@@ -21,6 +23,6 @@ final class SvgDetector implements DetectorInterface
     {
         $bytes = (string)$file->fread(4);
 
-        return strtolower($bytes) === '<svg' ? new ImageType(ImageType::SVG) : null;
+        return strtolower($bytes) === '<svg' ? new ImageType(ImageFormat::SVG, MimeType::IMAGE_SVG_XML) : null;
     }
 }

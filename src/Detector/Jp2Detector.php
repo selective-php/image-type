@@ -2,7 +2,9 @@
 
 namespace Selective\ImageType\Detector;
 
+use Selective\ImageType\ImageFormat;
 use Selective\ImageType\ImageType;
+use Selective\ImageType\MimeType;
 use SplFileObject;
 
 /**
@@ -22,6 +24,6 @@ final class Jp2Detector implements DetectorInterface
         $file->fread(16);
         $bytes = (string)$file->fread(7);
 
-        return $bytes === 'ftypjp2' ? new ImageType(ImageType::JP2) : null;
+        return $bytes === 'ftypjp2' ? new ImageType(ImageFormat::JP2, MimeType::IMAGE_JP2) : null;
     }
 }

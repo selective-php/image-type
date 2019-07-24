@@ -2,7 +2,9 @@
 
 namespace Selective\ImageType\Detector;
 
+use Selective\ImageType\ImageFormat;
 use Selective\ImageType\ImageType;
+use Selective\ImageType\MimeType;
 use SplFileObject;
 
 /**
@@ -28,6 +30,6 @@ final class PefDetector implements DetectorInterface
 
         $bytes = (string)$file->fread(510);
 
-        return strpos($bytes, 'PENTAX') >= 6 ? new ImageType(ImageType::PEF) : null;
+        return strpos($bytes, 'PENTAX') >= 6 ? new ImageType(ImageFormat::PEF, MimeType::IMAGE_X_PENTAX_RAW) : null;
     }
 }

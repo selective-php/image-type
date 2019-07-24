@@ -2,7 +2,9 @@
 
 namespace Selective\ImageType\Detector;
 
+use Selective\ImageType\ImageFormat;
 use Selective\ImageType\ImageType;
+use Selective\ImageType\MimeType;
 use SplFileObject;
 
 /**
@@ -19,6 +21,6 @@ final class XcfDetector implements DetectorInterface
      */
     public function detect(SplFileObject $file): ?ImageType
     {
-        return $file->fread(9) === 'gimp xcf ' ? new ImageType(ImageType::XCF) : null;
+        return $file->fread(9) === 'gimp xcf ' ? new ImageType(ImageFormat::XCF, MimeType::IMAGE_X_XCF) : null;
     }
 }

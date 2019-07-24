@@ -2,7 +2,9 @@
 
 namespace Selective\ImageType\Detector;
 
+use Selective\ImageType\ImageFormat;
 use Selective\ImageType\ImageType;
+use Selective\ImageType\MimeType;
 use SplFileObject;
 
 /**
@@ -23,6 +25,6 @@ final class AiDetector implements DetectorInterface
     {
         $bytes = (string)$file->fread(10);
 
-        return $bytes === '%!PS-Adobe' ? new ImageType(ImageType::AI) : null;
+        return $bytes === '%!PS-Adobe' ? new ImageType(ImageFormat::AI, MimeType::APPLICATION_POSTSCRIPT) : null;
     }
 }

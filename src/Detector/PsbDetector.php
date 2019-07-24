@@ -2,7 +2,9 @@
 
 namespace Selective\ImageType\Detector;
 
+use Selective\ImageType\ImageFormat;
 use Selective\ImageType\ImageType;
+use Selective\ImageType\MimeType;
 use SplFileObject;
 
 /**
@@ -19,6 +21,6 @@ final class PsbDetector implements DetectorInterface
      */
     public function detect(SplFileObject $file): ?ImageType
     {
-        return $file->fread(6) === "8BPS\0\2" ? new ImageType(ImageType::PSB) : null;
+        return $file->fread(6) === "8BPS\0\2" ? new ImageType(ImageFormat::PSB, MimeType::IMAGE_X_PSB) : null;
     }
 }

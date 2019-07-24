@@ -2,7 +2,9 @@
 
 namespace Selective\ImageType\Detector;
 
+use Selective\ImageType\ImageFormat;
 use Selective\ImageType\ImageType;
+use Selective\ImageType\MimeType;
 use SplFileObject;
 
 /**
@@ -19,6 +21,6 @@ final class PngDetector implements DetectorInterface
      */
     public function detect(SplFileObject $file): ?ImageType
     {
-        return$file->fread(4) === chr(0x89) . 'PNG' ? new ImageType(ImageType::PNG) : null;
+        return$file->fread(4) === chr(0x89) . 'PNG' ? new ImageType(ImageFormat::PNG, MimeType::IMAGE_PNG) : null;
     }
 }

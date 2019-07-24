@@ -2,7 +2,9 @@
 
 namespace Selective\ImageType\Detector;
 
+use Selective\ImageType\ImageFormat;
 use Selective\ImageType\ImageType;
+use Selective\ImageType\MimeType;
 use SplFileObject;
 
 /**
@@ -19,6 +21,6 @@ final class GifDetector implements DetectorInterface
      */
     public function detect(SplFileObject $file): ?ImageType
     {
-        return $file->fread(2) === 'GI' ? new ImageType(ImageType::GIF) : null;
+        return $file->fread(2) === 'GI' ? new ImageType(ImageFormat::GIF, MimeType::IMAGE_GIF) : null;
     }
 }

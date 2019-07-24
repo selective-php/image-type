@@ -2,7 +2,9 @@
 
 namespace Selective\ImageType\Detector;
 
+use Selective\ImageType\ImageFormat;
 use Selective\ImageType\ImageType;
+use Selective\ImageType\MimeType;
 use SplFileObject;
 
 /**
@@ -21,6 +23,6 @@ final class DpxDetector implements DetectorInterface
     {
         $bytes = (string)$file->fread(4);
 
-        return $bytes === 'SDPX' || $bytes === 'XPDS' ? new ImageType(ImageType::DPX) : null;
+        return $bytes === 'SDPX' || $bytes === 'XPDS' ? new ImageType(ImageFormat::DPX, MimeType::IMAGE_X_DPX) : null;
     }
 }

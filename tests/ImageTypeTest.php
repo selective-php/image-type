@@ -2,9 +2,11 @@
 
 namespace Selective\ImageType\Test;
 
+use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
-use ReflectionClass;
+use Selective\ImageType\ImageFormat;
 use Selective\ImageType\ImageType;
+use Selective\ImageType\MimeType;
 
 /**
  * Test.
@@ -14,41 +16,14 @@ class ImageTypeTest extends TestCase
     /**
      * Test.
      *
-     * @dataProvider providerCreateInstance
-     *
-     * @param string $type The type
-     * @param string $expected The expected value
-     *
      * @return void
      */
-    public function testCreateInstance(string $type, string $expected): void
+    public function testCreateInstance(): void
     {
-        $imageType = new ImageType($type);
+        $imageType = new ImageType(ImageFormat::JPEG, MimeType::IMAGE_JPEG);
 
-        $this->assertSame((string)$imageType, $expected);
-        $this->assertSame($imageType->__toString(), $imageType->toString());
-    }
-
-    /**
-     * Provider.
-     *
-     * @return array Data
-     */
-    public function providerCreateInstance(): array
-    {
-        $class = new ReflectionClass(ImageType::class);
-
-        $constants = $class->getConstants();
-
-        $data = [];
-        foreach ($constants as $constant) {
-            $data[] = [
-                $constant,
-                $constant,
-            ];
-        }
-
-        return $data;
+        $this->assertSame(ImageFormat::JPEG, $imageType->getFormat());
+        $this->assertSame(MimeType::IMAGE_JPEG, $imageType->getMimeType());
     }
 
     /**
@@ -58,7 +33,18 @@ class ImageTypeTest extends TestCase
      */
     public function testCreateInstanceWithError(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
-        new ImageType('');
+        $this->expectException(InvalidArgumentException::class);
+        new ImageType('', '');
+    }
+
+    /**
+     * Test.
+     *
+     * @return void
+     */
+    public function testCreateInstanceWithError2(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        new ImageType(ImageFormat::JPEG, '');
     }
 }

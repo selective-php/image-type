@@ -2,7 +2,9 @@
 
 namespace Selective\ImageType\Detector;
 
+use Selective\ImageType\ImageFormat;
 use Selective\ImageType\ImageType;
+use Selective\ImageType\MimeType;
 use SplFileObject;
 
 /**
@@ -33,26 +35,26 @@ final class HeicDetector implements DetectorInterface
         // Source: https://github.com/strukturag/libheif/issues/83
         $ccCodes = [
             // Usual HEIF images
-            'heic' => ImageType::HEIC,
+            'heic' => ImageFormat::HEIC,
             // 10bit images, or anything that uses h265 with range extension
-            'heix' => ImageType::HEIC,
+            'heix' => ImageFormat::HEIC,
             // Brands for image sequences
-            'hevc' => ImageType::HEIC_SEQUENCE,
-            'hevx' => ImageType::HEIC_SEQUENCE,
+            'hevc' => ImageFormat::HEIC_SEQUENCE,
+            'hevx' => ImageFormat::HEIC_SEQUENCE,
             // Multiview
-            'heim' => ImageType::HEIC,
+            'heim' => ImageFormat::HEIC,
             // Scalable
-            'heis' => ImageType::HEIC,
+            'heis' => ImageFormat::HEIC,
             // Multiview sequence
-            'hevm' => ImageType::HEIC_SEQUENCE,
+            'hevm' => ImageFormat::HEIC_SEQUENCE,
             // Scalable sequence
-            'hevs' => ImageType::HEIC_SEQUENCE,
+            'hevs' => ImageFormat::HEIC_SEQUENCE,
             // Special brands
-            'mif1' => ImageType::HEIC,
+            'mif1' => ImageFormat::HEIC,
             // Equivalent case for image sequences
-            'msf1' => ImageType::HEIC_SEQUENCE,
+            'msf1' => ImageFormat::HEIC_SEQUENCE,
         ];
 
-        return $bytes === 'ftyp' && isset($ccCodes[$ccCode]) ? new ImageType($ccCodes[$ccCode]) : null;
+        return $bytes === 'ftyp' && isset($ccCodes[$ccCode]) ? new ImageType($ccCodes[$ccCode], MimeType::IMAGE_HEIC) : null;
     }
 }

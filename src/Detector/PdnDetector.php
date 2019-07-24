@@ -2,7 +2,9 @@
 
 namespace Selective\ImageType\Detector;
 
+use Selective\ImageType\ImageFormat;
 use Selective\ImageType\ImageType;
+use Selective\ImageType\MimeType;
 use SplFileObject;
 
 /**
@@ -19,6 +21,6 @@ final class PdnDetector implements DetectorInterface
      */
     public function detect(SplFileObject $file): ?ImageType
     {
-        return (string)$file->fread(4) === 'PDN3' ? new ImageType(ImageType::PDN) : null;
+        return (string)$file->fread(4) === 'PDN3' ? new ImageType(ImageFormat::PDN, MimeType::IMAGE_X_PAINTNET) : null;
     }
 }

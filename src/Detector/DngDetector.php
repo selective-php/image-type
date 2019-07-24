@@ -2,7 +2,9 @@
 
 namespace Selective\ImageType\Detector;
 
+use Selective\ImageType\ImageFormat;
 use Selective\ImageType\ImageType;
+use Selective\ImageType\MimeType;
 use SplFileObject;
 
 /**
@@ -30,6 +32,7 @@ final class DngDetector implements DetectorInterface
         $bytes = (string)$file->fread(12);
 
         return ((strpos($bytes, "\x04") !== false || strpos($bytes, "\x02") !== false) &&
-            strpos($bytes, "\x01") && substr_count($bytes, "\0") >= 2) ? new ImageType(ImageType::DNG) : null;
+            strpos($bytes, "\x01") && substr_count($bytes, "\0") >= 2) ?
+            new ImageType(ImageFormat::DNG, MimeType::IMAGE_X_ADOBE_DNG) : null;
     }
 }

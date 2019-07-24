@@ -2,7 +2,9 @@
 
 namespace Selective\ImageType\Detector;
 
+use Selective\ImageType\ImageFormat;
 use Selective\ImageType\ImageType;
+use Selective\ImageType\MimeType;
 use SplFileObject;
 
 /**
@@ -19,6 +21,6 @@ final class IcoDetector implements DetectorInterface
      */
     public function detect(SplFileObject $file): ?ImageType
     {
-        return $file->fread(3) === "\0\0\1" ? new ImageType(ImageType::ICO) : null;
+        return $file->fread(3) === "\0\0\1" ? new ImageType(ImageFormat::ICO, MimeType::IMAGE_X_ICON) : null;
     }
 }

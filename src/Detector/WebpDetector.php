@@ -2,7 +2,9 @@
 
 namespace Selective\ImageType\Detector;
 
+use Selective\ImageType\ImageFormat;
 use Selective\ImageType\ImageType;
+use Selective\ImageType\MimeType;
 use SplFileObject;
 
 /**
@@ -21,6 +23,6 @@ final class WebpDetector implements DetectorInterface
     {
         $bytes = (string)$file->fread(12);
 
-        return substr($bytes, 8, 4) === 'WEBP' ? new ImageType(ImageType::WEBP) : null;
+        return substr($bytes, 8, 4) === 'WEBP' ? new ImageType(ImageFormat::WEBP, MimeType::IMAGE_WEBP) : null;
     }
 }

@@ -2,7 +2,9 @@
 
 namespace Selective\ImageType\Detector;
 
+use Selective\ImageType\ImageFormat;
 use Selective\ImageType\ImageType;
+use Selective\ImageType\MimeType;
 use SplFileObject;
 
 /**
@@ -21,6 +23,6 @@ final class WmfDetector implements DetectorInterface
     {
         $bytes = (string)$file->fread(4);
 
-        return $bytes === "\xd7\xcd\xc6\x9a" ? new ImageType(ImageType::WMF) : null;
+        return $bytes === "\xd7\xcd\xc6\x9a" ? new ImageType(ImageFormat::WMF, MimeType::IMAGE_X_WMF) : null;
     }
 }

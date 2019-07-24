@@ -2,7 +2,9 @@
 
 namespace Selective\ImageType\Detector;
 
+use Selective\ImageType\ImageFormat;
 use Selective\ImageType\ImageType;
+use Selective\ImageType\MimeType;
 use SplFileObject;
 
 /**
@@ -23,6 +25,6 @@ final class Cr3Detector implements DetectorInterface
 
         $bytes = $file->fread(7);
 
-        return $bytes === 'ftypcrx' ? new ImageType(ImageType::CR3) : null;
+        return $bytes === 'ftypcrx' ? new ImageType(ImageFormat::CR3, MimeType::IMAGE_CR3) : null;
     }
 }

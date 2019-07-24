@@ -2,7 +2,9 @@
 
 namespace Selective\ImageType\Detector;
 
+use Selective\ImageType\ImageFormat;
 use Selective\ImageType\ImageType;
+use Selective\ImageType\MimeType;
 use SplFileObject;
 
 /**
@@ -19,6 +21,6 @@ final class BmpDetector implements DetectorInterface
      */
     public function detect(SplFileObject $file): ?ImageType
     {
-        return $file->fread(2) === 'BM' ? new ImageType(ImageType::BMP) : null;
+        return $file->fread(2) === 'BM' ? new ImageType(ImageFormat::BMP, MimeType::IMAGE_BMP) : null;
     }
 }

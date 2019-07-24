@@ -2,7 +2,9 @@
 
 namespace Selective\ImageType\Detector;
 
+use Selective\ImageType\ImageFormat;
 use Selective\ImageType\ImageType;
+use Selective\ImageType\MimeType;
 use SplFileObject;
 
 /**
@@ -23,6 +25,6 @@ final class CineonDetector implements DetectorInterface
     {
         $bytes = bin2hex((string)$file->fread(4));
 
-        return $bytes === '802a5fd7' || $bytes === 'd75f2a80' ? new ImageType(ImageType::CIN) : null;
+        return $bytes === '802a5fd7' || $bytes === 'd75f2a80' ? new ImageType(ImageFormat::CIN, MimeType::IMAGE_CINEON) : null;
     }
 }

@@ -2,7 +2,9 @@
 
 namespace Selective\ImageType\Detector;
 
+use Selective\ImageType\ImageFormat;
 use Selective\ImageType\ImageType;
+use Selective\ImageType\MimeType;
 use SplFileObject;
 
 /**
@@ -36,6 +38,6 @@ final class EmfDetector implements DetectorInterface
         $emfPlusSignature = (string)$file->fread(4);
         $hasEmfPlus = $emfPlusSignature === 'EMF+';
 
-        return $hasEmf && !$hasEmfPlus ? new ImageType(ImageType::EMF) : null;
+        return $hasEmf && !$hasEmfPlus ? new ImageType(ImageFormat::EMF, MimeType::IMAGE_X_EMF) : null;
     }
 }

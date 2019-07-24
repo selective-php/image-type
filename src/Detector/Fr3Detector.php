@@ -2,7 +2,9 @@
 
 namespace Selective\ImageType\Detector;
 
+use Selective\ImageType\ImageFormat;
 use Selective\ImageType\ImageType;
+use Selective\ImageType\MimeType;
 use SplFileObject;
 
 /**
@@ -28,6 +30,6 @@ final class Fr3Detector implements DetectorInterface
 
         $bytes = (string)$file->fread(512);
 
-        return strpos($bytes, 'Hasselblad') > 10 ? new ImageType(ImageType::FR3) : null;
+        return strpos($bytes, 'Hasselblad') > 10 ? new ImageType(ImageFormat::FR3, MimeType::IMAGE_X_3_FR) : null;
     }
 }

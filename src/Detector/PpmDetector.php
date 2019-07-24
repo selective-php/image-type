@@ -2,7 +2,9 @@
 
 namespace Selective\ImageType\Detector;
 
+use Selective\ImageType\ImageFormat;
 use Selective\ImageType\ImageType;
+use Selective\ImageType\MimeType;
 use SplFileObject;
 
 /**
@@ -21,6 +23,6 @@ final class PpmDetector implements DetectorInterface
     {
         $bytes = (string)$file->fread(2);
 
-        return $bytes === 'P6' ? new ImageType(ImageType::PPM) : null;
+        return $bytes === 'P6' ? new ImageType(ImageFormat::PPM, MimeType::IMAGE_X_PORTABLE_PIXMAP) : null;
     }
 }

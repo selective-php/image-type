@@ -2,7 +2,9 @@
 
 namespace Selective\ImageType\Detector;
 
+use Selective\ImageType\ImageFormat;
 use Selective\ImageType\ImageType;
+use Selective\ImageType\MimeType;
 use SplFileObject;
 
 /**
@@ -21,6 +23,6 @@ final class DcmDetector implements DetectorInterface
     {
         $file->fread(128);
 
-        return $file->fread(4) === 'DICM' ? new ImageType(ImageType::DICOM) : null;
+        return $file->fread(4) === 'DICM' ? new ImageType(ImageFormat::DICOM, MimeType::APPLICATION_DICOM) : null;
     }
 }

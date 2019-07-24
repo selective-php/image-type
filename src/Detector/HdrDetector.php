@@ -2,7 +2,9 @@
 
 namespace Selective\ImageType\Detector;
 
+use Selective\ImageType\ImageFormat;
 use Selective\ImageType\ImageType;
+use Selective\ImageType\MimeType;
 use SplFileObject;
 
 /**
@@ -21,6 +23,6 @@ final class HdrDetector implements DetectorInterface
     {
         $bytes = (string)$file->fread(10);
 
-        return $bytes === '#?RADIANCE' || $bytes === '#?RGBE' ? new ImageType(ImageType::HDR) : null;
+        return $bytes === '#?RADIANCE' || $bytes === '#?RGBE' ? new ImageType(ImageFormat::HDR, MimeType::IMAGE_VND_RADIANCE) : null;
     }
 }

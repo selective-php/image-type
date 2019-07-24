@@ -2,7 +2,9 @@
 
 namespace Selective\ImageType\Detector;
 
+use Selective\ImageType\ImageFormat;
 use Selective\ImageType\ImageType;
+use Selective\ImageType\MimeType;
 use SplFileObject;
 
 /**
@@ -19,6 +21,6 @@ final class CurDetector implements DetectorInterface
      */
     public function detect(SplFileObject $file): ?ImageType
     {
-        return $file->fread(3) === "\0\0\2" ? new ImageType(ImageType::CUR) : null;
+        return $file->fread(3) === "\0\0\2" ? new ImageType(ImageFormat::CUR, MimeType::IMAGE_X_ICON) : null;
     }
 }

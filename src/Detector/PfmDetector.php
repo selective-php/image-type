@@ -2,7 +2,9 @@
 
 namespace Selective\ImageType\Detector;
 
+use Selective\ImageType\ImageFormat;
 use Selective\ImageType\ImageType;
+use Selective\ImageType\MimeType;
 use SplFileObject;
 
 /**
@@ -21,6 +23,6 @@ final class PfmDetector implements DetectorInterface
     {
         $bytes = strtoupper((string)$file->fread(2));
 
-        return $bytes === 'PF' ? new ImageType(ImageType::PFM) : null;
+        return $bytes === 'PF' ? new ImageType(ImageFormat::PFM, MimeType::IMAGE_X_PORTABLE_FLOATMAP) : null;
     }
 }

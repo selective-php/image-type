@@ -2,7 +2,9 @@
 
 namespace Selective\ImageType\Detector;
 
+use Selective\ImageType\ImageFormat;
 use Selective\ImageType\ImageType;
+use Selective\ImageType\MimeType;
 use SplFileObject;
 
 /**
@@ -23,6 +25,6 @@ final class AniDetector implements DetectorInterface
         $file->fread(4);
         $aniSignature = $file->fread(4);
 
-        return $riffSignature === 'RIFF' && $aniSignature === 'ACON' ? new ImageType(ImageType::ANI) : null;
+        return $riffSignature === 'RIFF' && $aniSignature === 'ACON' ? new ImageType(ImageFormat::ANI, MimeType::APPLICATION_X_NAVI_ANIMATION) : null;
     }
 }

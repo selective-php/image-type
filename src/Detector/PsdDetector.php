@@ -2,7 +2,9 @@
 
 namespace Selective\ImageType\Detector;
 
+use Selective\ImageType\ImageFormat;
 use Selective\ImageType\ImageType;
+use Selective\ImageType\MimeType;
 use SplFileObject;
 
 /**
@@ -19,6 +21,6 @@ final class PsdDetector implements DetectorInterface
      */
     public function detect(SplFileObject $file): ?ImageType
     {
-        return $file->fread(6) === "8BPS\0\1" ? new ImageType(ImageType::PSD) : null;
+        return $file->fread(6) === "8BPS\0\1" ? new ImageType(ImageFormat::PSD, MimeType::IMAGE_VND_ADOBE_PHOTOSHOP) : null;
     }
 }

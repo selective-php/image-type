@@ -2,7 +2,9 @@
 
 namespace Selective\ImageType\Detector;
 
+use Selective\ImageType\ImageFormat;
 use Selective\ImageType\ImageType;
+use Selective\ImageType\MimeType;
 use SplFileObject;
 
 /**
@@ -21,6 +23,6 @@ final class ExrDetector implements DetectorInterface
     {
         $bytes = (string)$file->fread(4);
 
-        return bin2hex($bytes) === '762f3101' ? new ImageType(ImageType::EXR) : null;
+        return bin2hex($bytes) === '762f3101' ? new ImageType(ImageFormat::EXR, MimeType::IMAGE_X_EXR) : null;
     }
 }

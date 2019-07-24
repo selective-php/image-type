@@ -2,7 +2,9 @@
 
 namespace Selective\ImageType\Detector;
 
+use Selective\ImageType\ImageFormat;
 use Selective\ImageType\ImageType;
+use Selective\ImageType\MimeType;
 use SplFileObject;
 
 /**
@@ -30,6 +32,7 @@ final class SwfDetector implements DetectorInterface
             'Z' => 1,
         ];
 
-        return $signature === 'WS' && isset($compressions[$compression]) ? new ImageType(ImageType::SWF) : null;
+        return $signature === 'WS' && isset($compressions[$compression]) ?
+            new ImageType(ImageFormat::SWF, MimeType::APPLICATION_X_SHOCKWAVE_FLASH) : null;
     }
 }

@@ -2,7 +2,9 @@
 
 namespace Selective\ImageType\Detector;
 
+use Selective\ImageType\ImageFormat;
 use Selective\ImageType\ImageType;
+use Selective\ImageType\MimeType;
 use SplFileObject;
 
 /**
@@ -19,6 +21,6 @@ final class JpegDetector implements DetectorInterface
      */
     public function detect(SplFileObject $file): ?ImageType
     {
-        return $file->fread(2) === chr(0xFF) . chr(0xd8) ? new ImageType(ImageType::JPEG) : null;
+        return $file->fread(2) === chr(0xFF) . chr(0xd8) ? new ImageType(ImageFormat::JPEG, MimeType::IMAGE_JPEG) : null;
     }
 }

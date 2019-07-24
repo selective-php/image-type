@@ -2,7 +2,9 @@
 
 namespace Selective\ImageType\Detector;
 
+use Selective\ImageType\ImageFormat;
 use Selective\ImageType\ImageType;
+use Selective\ImageType\MimeType;
 use SplFileObject;
 
 /**
@@ -21,6 +23,7 @@ final class JpmDetector implements DetectorInterface
     {
         $bytes = bin2hex((string)$file->fread(24));
 
-        return $bytes === '0000000c6a5020200d0a870a00000014667479706a706d20' ? new ImageType(ImageType::JPM) : null;
+        return $bytes === '0000000c6a5020200d0a870a00000014667479706a706d20' ?
+            new ImageType(ImageFormat::JPM, MimeType::IMAGE_JPM) : null;
     }
 }

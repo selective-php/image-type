@@ -2,7 +2,9 @@
 
 namespace Selective\ImageType\Detector;
 
+use Selective\ImageType\ImageFormat;
 use Selective\ImageType\ImageType;
+use Selective\ImageType\MimeType;
 use SplFileObject;
 
 /**
@@ -21,6 +23,7 @@ final class OrfDetector implements DetectorInterface
     {
         $bytes = $file->fread(4);
 
-        return $bytes === 'IIRO' || $bytes === 'MMOR' || $bytes === 'IIRS' ? new ImageType(ImageType::ORF) : null;
+        return $bytes === 'IIRO' || $bytes === 'MMOR' || $bytes === 'IIRS' ?
+            new ImageType(ImageFormat::ORF, MimeType::IMAGE_X_OLYMPUS_ORF) : null;
     }
 }
