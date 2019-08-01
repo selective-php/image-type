@@ -63,7 +63,6 @@ Image type detection library for PHP.
 * **IIQ** (Phase One)
 * **ORF** (Olympus)
 * **PEF** (Pentax)
-* **PEF** (Pentax)
 * **RW2** (Panasonic)
 
 #### HDR
