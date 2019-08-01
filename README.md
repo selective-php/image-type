@@ -20,35 +20,35 @@ Image type detection library for PHP.
 
 #### Raster
 
-* **JPG** / **JPEG** (Joint Photographic Experts Group)
-* **GIF** (Graphics Interchange Format)
-* **PNG** (Portable Network Graphics)
-* **WEBP** (WebP)
+* **ANI** (Animated Cursor)
 * **BMP** (Windows Bitmap)
+* **CUR** (Cursor)
+* **DICOM** (Digital Imaging and Communications in Medicine)
+* **GIF** (Graphics Interchange Format)
+* **HEIF** / **HEIC** (High Efficiency Image File Format) / Apple iPhone photos
+* **ICO** (Icon)
+* **JNG** (JPEG Network Graphics)
+* **JPEG 2000**
+* **JPG** / **JPEG** (Joint Photographic Experts Group)
+* **JPM** (JPEG 2000 compound image)
+* **MNG** (Multiple-image Network Graphics)
+* **PDN** (PaintDotNet)
+* **PGM** (Portable Graymap)
+* **PNG** (Portable Network Graphics)
+* **PPM** (Portable Pixelmap)
+* **PSB** (Photoshop Large Document)
 * **PSD** (Photoshop Document)
 * **TIF** / **TIFF** (Tagged Image File Format)
-* **ICO** (Icon)
-* **CUR** (Cursor)
-* **ANI** (Animated Cursor)
-* **HEIF** / **HEIC** (High Efficiency Image File Format) / Apple iPhone photos
-* **JPEG 2000**
-* **JPM** (JPEG 2000 compound image)
-* **PDN** (PaintDotNet)
-* **JNG** (JPEG Network Graphics)
-* **DICOM** (Digital Imaging and Communications in Medicine)
+* **WEBP** (WebP)
 * **XCF** (eXperimental Computing Facility (GIMP))
-* **MNG** (Multiple-image Network Graphics)
-* **PSB** (Photoshop Large Document)
-* **PPM** (Portable Pixelmap)
-* **PGM** (Portable Graymap)
 
 #### Vector
 
-* **SVG** (Scalable Vector Graphics)
 * **AI** (Adobe Illustrator)
-* **WMF** (Windows Metafile Format)
 * **EMF** (Enhanced Metafile)
 * **EMF+** (Enhanced Metafile)
+* **SVG** (Scalable Vector Graphics)
+* **WMF** (Windows Metafile Format)
 
 #### Compound
 
@@ -56,25 +56,25 @@ Image type detection library for PHP.
 
 #### RAW
 
-* **CR3** (Canon)
-* **CR2** (Cannon)
-* **PEF** (Pentax)
-* **RW2** (Panasonic)
-* **PEF** (Pentax)
 * **3FR** (Hasselblad)
+* **CR2** (Cannon)
+* **CR3** (Canon)
+* **DNG** (Digital Negative - Adobe)
 * **IIQ** (Phase One)
 * **ORF** (Olympus)
-* **DNG** (Digital Negative - Adobe)
+* **PEF** (Pentax)
+* **PEF** (Pentax)
+* **RW2** (Panasonic)
 
 #### HDR
 
 * **JPEG-HDR**
-* **Radiance HDR**
 * **CIN** (Cineon Image File Format, Kodak)
-* **PFM** (Portable Float Map)
 * **DPX** (Digital Picture Exchange)
-* **PBM** (Portable Bit Map HDR)
 * **OpenEXR**
+* **PBM** (Portable Bit Map HDR)
+* **PFM** (Portable Float Map)
+* **Radiance HDR**
 
 ## Requirements
 
