@@ -21,6 +21,9 @@ final class PsdDetector implements DetectorInterface
      */
     public function detect(SplFileObject $file): ?ImageType
     {
-        return $file->fread(6) === "8BPS\0\1" ? new ImageType(ImageFormat::PSD, MimeType::IMAGE_VND_ADOBE_PHOTOSHOP) : null;
+        return $file->fread(6) === "8BPS\0\1" ? new ImageType(
+            ImageFormat::PSD,
+            MimeType::IMAGE_VND_ADOBE_PHOTOSHOP
+        ) : null;
     }
 }
