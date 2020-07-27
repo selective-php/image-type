@@ -23,6 +23,9 @@ final class HdrDetector implements DetectorInterface
     {
         $bytes = (string)$file->fread(10);
 
-        return $bytes === '#?RADIANCE' || $bytes === '#?RGBE' ? new ImageType(ImageFormat::HDR, MimeType::IMAGE_VND_RADIANCE) : null;
+        return $bytes === '#?RADIANCE' || $bytes === '#?RGBE' ? new ImageType(
+            ImageFormat::HDR,
+            MimeType::IMAGE_VND_RADIANCE
+        ) : null;
     }
 }
