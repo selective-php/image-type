@@ -66,7 +66,7 @@ class ImageTypeDetectorTest extends TestCase
     /**
      * Provider.
      *
-     * @return array
+     * @return array<int, array<int, string>>
      */
     public function providerGetImageTypeFromFile(): array
     {
