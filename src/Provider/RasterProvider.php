@@ -15,7 +15,9 @@ use Selective\ImageType\Detector\JpegDetector;
 use Selective\ImageType\Detector\JpmDetector;
 use Selective\ImageType\Detector\MngDetector;
 use Selective\ImageType\Detector\PdnDetector;
+use Selective\ImageType\Detector\PgmDetector;
 use Selective\ImageType\Detector\PngDetector;
+use Selective\ImageType\Detector\PpmDetector;
 use Selective\ImageType\Detector\PsbDetector;
 use Selective\ImageType\Detector\PsdDetector;
 use Selective\ImageType\Detector\SvgDetector;
@@ -23,8 +25,6 @@ use Selective\ImageType\Detector\SwfDetector;
 use Selective\ImageType\Detector\TiffDetector;
 use Selective\ImageType\Detector\WebpDetector;
 use Selective\ImageType\Detector\XcfDetector;
-use Selective\ImageType\Detector\PgmDetector;
-use Selective\ImageType\Detector\PpmDetector;
 
 /**
  * Raster Provider.
