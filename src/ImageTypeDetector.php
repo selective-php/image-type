@@ -30,8 +30,6 @@ final class ImageTypeDetector
      * Add image detector provider.
      *
      * @param ProviderInterface $provider The provider
-     *
-     * @return void
      */
     public function addProvider(ProviderInterface $provider): void
     {
@@ -64,8 +62,6 @@ final class ImageTypeDetector
      * Reads and returns the type of the image.
      *
      * @param SplFileObject $file The image file
-     *
-     * @return ImageType|null
      */
     private function detectFile(SplFileObject $file): ?ImageType
     {

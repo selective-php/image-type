@@ -15,8 +15,6 @@ class ImageTypeTest extends TestCase
 {
     /**
      * Test.
-     *
-     * @return void
      */
     public function testCreateInstance(): void
     {
@@ -28,8 +26,6 @@ class ImageTypeTest extends TestCase
 
     /**
      * Test.
-     *
-     * @return void
      */
     public function testCreateInstanceWithError(): void
     {
@@ -39,8 +35,6 @@ class ImageTypeTest extends TestCase
 
     /**
      * Test.
-     *
-     * @return void
      */
     public function testCreateInstanceWithError2(): void
     {

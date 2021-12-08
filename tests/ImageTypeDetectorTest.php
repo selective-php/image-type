@@ -9,8 +9,8 @@ use Selective\ImageType\ImageTypeDetector;
 use Selective\ImageType\ImageTypeDetectorException;
 use Selective\ImageType\MimeType;
 use Selective\ImageType\Provider\CompoundProvider;
-use Selective\ImageType\Provider\RasterProvider;
 use Selective\ImageType\Provider\HdrProvider;
+use Selective\ImageType\Provider\RasterProvider;
 use Selective\ImageType\Provider\RawProvider;
 use Selective\ImageType\Provider\VectorProvider;
 use SplFileObject;
@@ -47,8 +47,6 @@ class ImageTypeDetectorTest extends TestCase
      * @param string $file The file
      * @param string $format The expected format
      * @param string $mime The expected mime type
-     *
-     * @return void
      */
     public function testGetImageTypeFromFile(string $file, string $format, string $mime): void
     {
@@ -136,8 +134,6 @@ class ImageTypeDetectorTest extends TestCase
 
     /**
      * Test.
-     *
-     * @return void
      */
     public function testGetImageTypeWithUnknownFormat(): void
     {
