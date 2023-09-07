@@ -8,7 +8,7 @@ jobs:
     strategy:
       matrix:
         operating-system: [ubuntu-latest]
-        php-versions: ['7.2', '7.3', '7.4', '8.0', '8.1']
+        php-versions: ['7.2', '7.3', '7.4', '8.0', '8.1', '8.2']
     name: PHP ${{ matrix.php-versions }} Test on ${{ matrix.operating-system }}
 
     steps:
@@ -39,3 +39,5 @@ jobs:
 
       - name: Run test suite
         run: composer check
+        env:
+          PHP_CS_FIXER_IGNORE_ENV: 1
