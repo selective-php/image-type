@@ -55,6 +55,9 @@ final class HeicDetector implements DetectorInterface
             'msf1' => ImageFormat::HEIC_SEQUENCE,
         ];
 
-        return $bytes === 'ftyp' && isset($ccCodes[$ccCode]) ? new ImageType($ccCodes[$ccCode], MimeType::IMAGE_HEIC) : null;
+        return $bytes === 'ftyp' && isset($ccCodes[$ccCode]) ? new ImageType(
+            $ccCodes[$ccCode],
+            MimeType::IMAGE_HEIC
+        ) : null;
     }
 }
