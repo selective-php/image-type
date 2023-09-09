@@ -5,10 +5,10 @@ namespace Selective\ImageType\Provider;
 use Selective\ImageType\Detector\CineonDetector;
 use Selective\ImageType\Detector\DpxDetector;
 use Selective\ImageType\Detector\ExrDetector;
+use Selective\ImageType\Detector\HdrDetector;
 use Selective\ImageType\Detector\JpegHdrDetector;
 use Selective\ImageType\Detector\PbmDetector;
 use Selective\ImageType\Detector\PfmDetector;
-use Selective\ImageType\Detector\HdrDetector;
 
 /**
  * Provider.

@@ -23,6 +23,8 @@ final class PbmDetector implements DetectorInterface
     {
         $bytes = (string)$file->fread(2);
 
-        return $bytes === 'P1' || $bytes === 'P4' ? new ImageType(ImageFormat::PBM, MimeType::IMAGE_X_PORTABLE_BITMAP) : null;
+        return $bytes === 'P1' || $bytes === 'P4' ?
+            new ImageType(ImageFormat::PBM, MimeType::IMAGE_X_PORTABLE_BITMAP)
+            : null;
     }
 }

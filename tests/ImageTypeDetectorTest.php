@@ -9,8 +9,8 @@ use Selective\ImageType\ImageTypeDetector;
 use Selective\ImageType\ImageTypeDetectorException;
 use Selective\ImageType\MimeType;
 use Selective\ImageType\Provider\CompoundProvider;
-use Selective\ImageType\Provider\RasterProvider;
 use Selective\ImageType\Provider\HdrProvider;
+use Selective\ImageType\Provider\RasterProvider;
 use Selective\ImageType\Provider\RawProvider;
 use Selective\ImageType\Provider\VectorProvider;
 use SplFileObject;
@@ -68,7 +68,7 @@ class ImageTypeDetectorTest extends TestCase
      *
      * @return array
      */
-    public function providerGetImageTypeFromFile(): array
+    public static function providerGetImageTypeFromFile(): array
     {
         return [
             [__DIR__ . '/images/test.ai', ImageFormat::AI, MimeType::APPLICATION_POSTSCRIPT],
@@ -119,7 +119,11 @@ class ImageTypeDetectorTest extends TestCase
             [__DIR__ . '/images/test-iirs.orf', ImageFormat::ORF, MimeType::IMAGE_X_OLYMPUS_ORF],
             [__DIR__ . '/images/test-mif1.heic', ImageFormat::HEIC, MimeType::IMAGE_HEIC],
             [__DIR__ . '/images/test-mmor.orf', ImageFormat::ORF, MimeType::IMAGE_X_OLYMPUS_ORF],
-            [__DIR__ . '/images/test-panasonic-lumix-dmc-lx3-01.rw2', ImageFormat::RW2, MimeType::IMAGE_X_PANASONIC_RW_2],
+            [
+                __DIR__ . '/images/test-panasonic-lumix-dmc-lx3-01.rw2',
+                ImageFormat::RW2,
+                MimeType::IMAGE_X_PANASONIC_RW_2,
+            ],
             [__DIR__ . '/images/test-pfm.pfm', ImageFormat::PFM, MimeType::IMAGE_X_PORTABLE_FLOATMAP],
             [__DIR__ . '/images/test-phase-one.iiq', ImageFormat::TIFF, MimeType::IMAGE_TIFF],
             [__DIR__ . '/images/test-png24.png', ImageFormat::PNG, MimeType::IMAGE_PNG],

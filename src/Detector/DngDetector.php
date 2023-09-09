@@ -31,8 +31,8 @@ final class DngDetector implements DetectorInterface
         $file->fread(6);
         $bytes = (string)$file->fread(12);
 
-        return ((strpos($bytes, "\x04") !== false || strpos($bytes, "\x02") !== false) &&
-            strpos($bytes, "\x01") && substr_count($bytes, "\0") >= 2) ?
+        return ((strpos($bytes, "\x04") !== false || strpos($bytes, "\x02") !== false)
+            && strpos($bytes, "\x01") && substr_count($bytes, "\0") >= 2) ?
             new ImageType(ImageFormat::DNG, MimeType::IMAGE_X_ADOBE_DNG) : null;
     }
 }
