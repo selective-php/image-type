@@ -2,6 +2,7 @@
 
 namespace Selective\ImageType\Test;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Selective\ImageType\ImageFormat;
 use Selective\ImageType\ImageType;
@@ -42,14 +43,13 @@ class ImageTypeDetectorTest extends TestCase
     /**
      * Test.
      *
-     * @dataProvider providerGetImageTypeFromFile
-     *
      * @param string $file The file
      * @param string $format The expected format
      * @param string $mime The expected mime type
      *
      * @return void
      */
+    #[DataProvider('providerGetImageTypeFromFile')]
     public function testGetImageTypeFromFile(string $file, string $format, string $mime): void
     {
         $this->assertFileExists($file);
